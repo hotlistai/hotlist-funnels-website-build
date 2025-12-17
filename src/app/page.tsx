@@ -204,18 +204,18 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Custom Build",
-                description: "We design a conversion system tailored to your industry, target market, and goals",
+                title: "Lead Intelligence Targeting",
+                description: "We identify and target your exact ideal clients using advanced lead intelligence and remarketing strategies",
               },
               {
                 step: "02",
-                title: "Launch & Run",
-                description: "Your funnel goes live with optimized ad campaigns across multiple channels",
+                title: "FOMO Quiz Funnel Creation",
+                description: "We build emotionally-driven quiz funnels specific to your brand that create fear, urgency, and instant connection with your audience",
               },
               {
                 step: "03",
-                title: "Scale on Autopilot",
-                description: "We continuously test, optimize, and scale what works best for your business",
+                title: "Automated Conversion",
+                description: "Quiz takers receive irresistible offers (discounts, free guides) while you get qualified leads ready to buy",
               },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeIn}>
