@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Home Services Contractor Leads",
   subtitle: "Fill your calendar with homeowners ready to start their projects",
-  icon: Hammer,
+    icon: <Hammer className="h-16 w-16" />,
   problems: [
     {
       title: "Price Shoppers",
