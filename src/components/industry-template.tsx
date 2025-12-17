@@ -1,31 +1,16 @@
-"use client"
-
-import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Check, LucideIcon } from "lucide-react"
-
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-}
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
+import { Check } from "lucide-react"
+import { MotionDiv, MotionSection, MotionFadeIn } from "@/components/motion-wrapper"
+import { ReactNode } from "react"
 
 interface IndustryData {
   title: string
   subtitle: string
-  icon: LucideIcon
+  icon: ReactNode
   problems: Array<{ title: string; description: string }>
   howItWorks: Array<{ step: string; title: string; description: string }>
   results: Array<{ metric: string; description: string }>
@@ -43,75 +28,55 @@ const pricingFeatures = [
 ]
 
 export function IndustryTemplate({ data }: { data: IndustryData }) {
-  const Icon = data.icon
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       <section className="relative overflow-hidden border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.div variants={fadeIn} className="mb-6 flex justify-center">
-              <Icon className="h-16 w-16" />
-            </motion.div>
-            <motion.h1
-              variants={fadeIn}
-              className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6"
-            >
-              {data.title}
-            </motion.h1>
-            <motion.p
-              variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground mb-8"
-            >
-              {data.subtitle}
-            </motion.p>
-            <motion.div variants={fadeIn}>
+          <MotionSection className="text-center max-w-4xl mx-auto">
+            <MotionFadeIn className="mb-6 flex justify-center">
+              {data.icon}
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <h1 className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+                {data.title}
+              </h1>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+                {data.subtitle}
+              </p>
+            </MotionFadeIn>
+            <MotionFadeIn>
               <Link href="/contact">
                 <Button size="lg" className="text-lg h-12 px-8">
                   Get Started
                 </Button>
               </Link>
-            </motion.div>
-          </motion.div>
+            </MotionFadeIn>
+          </MotionSection>
         </div>
       </section>
 
       <section className="py-24 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
-            >
-              The Problem
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              Challenges you face every day
-            </motion.p>
-          </motion.div>
+          <MotionSection className="text-center mb-16">
+            <MotionFadeIn>
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+                The Problem
+              </h2>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl text-muted-foreground">
+                Challenges you face every day
+              </p>
+            </MotionFadeIn>
+          </MotionSection>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
+          <MotionSection className="grid md:grid-cols-3 gap-8">
             {data.problems.map((problem, i) => (
-              <motion.div key={i} variants={fadeIn}>
+              <MotionFadeIn key={i}>
                 <Card className="h-full">
                   <CardHeader>
                     <CardTitle className="text-xl">{problem.title}</CardTitle>
@@ -120,41 +85,30 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                     <CardDescription className="text-base">{problem.description}</CardDescription>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </MotionFadeIn>
             ))}
-          </motion.div>
+          </MotionSection>
         </div>
       </section>
 
       <section className="py-24 bg-muted/50 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
-            >
-              How It Works
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              Our proven 4-step process
-            </motion.p>
-          </motion.div>
+          <MotionSection className="text-center mb-16">
+            <MotionFadeIn>
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+                How It Works
+              </h2>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl text-muted-foreground">
+                Our proven 4-step process
+              </p>
+            </MotionFadeIn>
+          </MotionSection>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
+          <MotionSection className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.howItWorks.map((item, i) => (
-              <motion.div key={i} variants={fadeIn}>
+              <MotionFadeIn key={i}>
                 <Card className="h-full">
                   <CardHeader>
                     <div className="text-5xl font-serif font-semibold text-muted-foreground/20 mb-4">
@@ -166,73 +120,57 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                     <CardDescription className="text-base">{item.description}</CardDescription>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </MotionFadeIn>
             ))}
-          </motion.div>
+          </MotionSection>
         </div>
       </section>
 
       <section className="py-24 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
-            >
-              What You Get
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              Real results that matter
-            </motion.p>
-          </motion.div>
+          <MotionSection className="text-center mb-16">
+            <MotionFadeIn>
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+                What You Get
+              </h2>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl text-muted-foreground">
+                Real results that matter
+              </p>
+            </MotionFadeIn>
+          </MotionSection>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
+          <MotionSection className="grid md:grid-cols-3 gap-8">
             {data.results.map((result, i) => (
-              <motion.div key={i} variants={fadeIn}>
+              <MotionFadeIn key={i}>
                 <Card className="h-full text-center">
                   <CardHeader>
                     <div className="text-4xl font-serif font-semibold mb-2">{result.metric}</div>
                     <CardDescription className="text-base">{result.description}</CardDescription>
                   </CardHeader>
                 </Card>
-              </motion.div>
+              </MotionFadeIn>
             ))}
-          </motion.div>
+          </MotionSection>
         </div>
       </section>
 
       <section className="py-24 bg-muted/50 border-b border-border">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center"
-          >
-            <motion.h2
-              variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
-            >
-              Simple, Transparent Pricing
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12">
-              One price, everything included
-            </motion.p>
+          <MotionSection className="text-center">
+            <MotionFadeIn>
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+                Simple, Transparent Pricing
+              </h2>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl text-muted-foreground mb-12">
+                One price, everything included
+              </p>
+            </MotionFadeIn>
 
-            <motion.div variants={fadeIn}>
+            <MotionFadeIn>
               <Card className="border-2">
                 <CardHeader className="text-center pb-8">
                   <div className="mb-4">
@@ -258,36 +196,32 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          </motion.div>
+            </MotionFadeIn>
+          </MotionSection>
         </div>
       </section>
 
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h2
-              variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-6"
-            >
-              Ready to Get Started?
-            </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-8">
-              Book a free demo to see how we can transform your lead generation
-            </motion.p>
-            <motion.div variants={fadeIn}>
+          <MotionSection>
+            <MotionFadeIn>
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-6">
+                Ready to Get Started?
+              </h2>
+            </MotionFadeIn>
+            <MotionFadeIn>
+              <p className="text-xl text-muted-foreground mb-8">
+                Book a free demo to see how we can transform your lead generation
+              </p>
+            </MotionFadeIn>
+            <MotionFadeIn>
               <Link href="/contact">
                 <Button size="lg" className="text-lg h-12 px-8">
                   Book Your Demo
                 </Button>
               </Link>
-            </motion.div>
-          </motion.div>
+            </MotionFadeIn>
+          </MotionSection>
         </div>
       </section>
 
