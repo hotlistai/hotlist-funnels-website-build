@@ -5,12 +5,12 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Check } from "lucide-react"
 import { MotionDiv, MotionSection, MotionFadeIn } from "@/components/motion-wrapper"
-import { ReactNode } from "react"
+import * as Icons from "lucide-react"
 
 interface IndustryData {
   title: string
   subtitle: string
-  icon: ReactNode
+  iconName: keyof typeof Icons
   problems: Array<{ title: string; description: string }>
   howItWorks: Array<{ step: string; title: string; description: string }>
   results: Array<{ metric: string; description: string }>
@@ -28,6 +28,8 @@ const pricingFeatures = [
 ]
 
 export function IndustryTemplate({ data }: { data: IndustryData }) {
+  const Icon = Icons[data.iconName] as React.ElementType
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -36,7 +38,7 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
           <MotionSection className="text-center max-w-4xl mx-auto">
             <MotionFadeIn className="mb-6 flex justify-center">
-              {data.icon}
+              {Icon && <Icon className="h-16 w-16" />}
             </MotionFadeIn>
             <MotionFadeIn>
               <h1 className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6">
