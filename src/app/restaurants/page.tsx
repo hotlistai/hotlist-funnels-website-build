@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Restaurant Staffing Funnels",
   subtitle: "Build a reliable pipeline of qualified kitchen and service staff",
-  icon: UtensilsCrossed,
+    icon: <UtensilsCrossed className="h-16 w-16" />,
   problems: [
     {
       title: "Constant Turnover",

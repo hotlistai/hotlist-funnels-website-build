@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Solar Installation Leads",
   subtitle: "Generate qualified solar appointments with homeowners ready to go green",
-  icon: Sun,
+    icon: <Sun className="h-16 w-16" />,
   problems: [
     {
       title: "Unqualified Prospects",
