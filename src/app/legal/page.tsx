@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Law Firm Client Acquisition",
   subtitle: "Attract and qualify potential clients for your practice on autopilot",
-  icon: Scale,
+    icon: <Scale className="h-16 w-16" />,
   problems: [
     {
       title: "Inconsistent Caseload",

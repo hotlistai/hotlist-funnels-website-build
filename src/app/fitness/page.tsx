@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Gym Member Acquisition",
   subtitle: "Turn trial members into long-term committed gym members",
-  icon: Dumbbell,
+    icon: <Dumbbell className="h-16 w-16" />,
   problems: [
     {
       title: "Trial No-Shows",
