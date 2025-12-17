@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Blue Collar Recruiting",
   subtitle: "Recruit reliable workers for manufacturing, warehousing, and trades",
-  icon: HardHat,
+    icon: <HardHat className="h-16 w-16" />,
   problems: [
     {
       title: "High Turnover",
