@@ -1,5 +1,4 @@
 import { IndustryTemplate } from "@/components/industry-template"
-import { Scale } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Law Firm Client Acquisition",
   subtitle: "Attract and qualify potential clients for your practice on autopilot",
-    icon: <Scale className="h-16 w-16" />,
+  iconName: "Scale" as const,
   problems: [
     {
       title: "Inconsistent Caseload",
