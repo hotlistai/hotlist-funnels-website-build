@@ -123,14 +123,14 @@ const features = [
 ]
 
 const pricingFeatures = [
-  "Custom landing page design",
-  "AI-powered lead qualification",
-  "Multi-channel ad management",
-  "CRM integration setup",
-  "Real-time analytics dashboard",
-  "Monthly strategy calls",
-  "A/B testing & optimization",
-  "Dedicated account manager",
+  "Custom FOMO-driven quiz funnel design",
+  "Lead intelligence targeting & remarketing",
+  "Brand-specific emotional engagement strategy",
+  "Irresistible incentive offers setup",
+  "Multi-channel campaign management",
+  "Real-time quiz & conversion analytics",
+  "Continuous A/B testing & optimization",
+  "Dedicated funnel strategist",
 ]
 
 export default function Home() {
