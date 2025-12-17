@@ -327,13 +327,13 @@ export default function Home() {
       </section>
 
       <section className="py-24 bg-muted/50 border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center"
+            className="text-center mb-16"
           >
             <motion.h2
               variants={fadeIn}
@@ -341,30 +341,91 @@ export default function Home() {
             >
               Simple, Transparent Pricing
             </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12">
-              One price, everything included
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
+              Choose the plan that fits your business needs
             </motion.p>
+          </motion.div>
 
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-8"
+          >
             <motion.div variants={fadeIn}>
-              <Card className="border-2">
-                <CardHeader className="text-center pb-8">
+              <Card className="h-full border-2 border-foreground relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-foreground text-background px-4 py-1 rounded-full text-sm font-semibold">
+                  RECOMMENDED
+                </div>
+                <CardHeader className="text-center pb-8 pt-10">
+                  <CardTitle className="text-3xl mb-2">The Accelerator</CardTitle>
+                  <CardDescription className="text-base mb-6">
+                    Best for businesses ready to fix their pipeline immediately
+                  </CardDescription>
                   <div className="mb-4">
-                    <div className="text-5xl font-serif font-semibold mb-2">$2,500</div>
-                    <div className="text-muted-foreground">One-time setup</div>
+                    <div className="text-5xl font-serif font-semibold mb-2">$1,495</div>
+                    <div className="text-muted-foreground">One-time onboarding</div>
                   </div>
-                  <div className="text-4xl font-serif font-semibold mb-2">$750/mo</div>
-                  <CardDescription className="text-lg">Full service management</CardDescription>
+                  <div className="text-4xl font-serif font-semibold mb-2">$1,495/mo</div>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {pricingFeatures.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                      <span className="text-left">{feature}</span>
-                    </div>
-                  ))}
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Hotlist Quiz Engine + Lyft Email Outreach (5k contacts)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Full management, reporting, and optimization</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Complete quiz build, email domain warm-up, and pixel setup</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Open ad spend budget (pay Google/Meta directly)</span>
+                  </div>
                   <div className="pt-6">
                     <Link href="/contact">
                       <Button size="lg" className="w-full">
+                        Get Started
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div variants={fadeIn}>
+              <Card className="h-full">
+                <CardHeader className="text-center pb-8">
+                  <CardTitle className="text-3xl mb-2">The Starter</CardTitle>
+                  <CardDescription className="text-base mb-6">
+                    Best for businesses who just want inbound leads
+                  </CardDescription>
+                  <div className="mb-4">
+                    <div className="text-5xl font-serif font-semibold mb-2">$995</div>
+                    <div className="text-muted-foreground">One-time onboarding</div>
+                  </div>
+                  <div className="text-4xl font-serif font-semibold mb-2">$795/mo</div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Hotlist Quiz Engine management & optimization</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Quiz build and pixel setup</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-left">Open ad spend budget (pay Google/Meta directly)</span>
+                  </div>
+                  <div className="pt-6">
+                    <Link href="/contact">
+                      <Button size="lg" variant="outline" className="w-full">
                         Get Started
                       </Button>
                     </Link>
