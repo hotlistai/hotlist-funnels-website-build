@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Real Estate Lead Generation",
   subtitle: "Convert property leads into qualified buyers and sellers on autopilot",
-  icon: Building2,
+    icon: <Building2 className="h-16 w-16" />,
   problems: [
     {
       title: "Low-Quality Leads",
