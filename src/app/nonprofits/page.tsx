@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Nonprofit Donor Engagement",
   subtitle: "Convert website visitors into monthly donors and engaged volunteers",
-  icon: Heart,
+    icon: <Heart className="h-16 w-16" />,
   problems: [
     {
       title: "One-Time Donors",
