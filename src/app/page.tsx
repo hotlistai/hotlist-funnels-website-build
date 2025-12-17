@@ -92,33 +92,33 @@ const industries = [
 const features = [
   {
     icon: Sparkles,
-    title: "Landing Pages",
-    description: "Custom-built conversion funnels designed for your industry",
+    title: "FOMO Quiz Funnels",
+    description: "Emotionally-charged quizzes that trigger fear, urgency, and instant action from your target audience",
   },
   {
     icon: Target,
-    title: "AI Qualification",
-    description: "Intelligent lead scoring to prioritize your best opportunities",
+    title: "Lead Intelligence Targeting",
+    description: "Precision targeting and remarketing to reach your exact ideal clientele with laser accuracy",
   },
   {
     icon: TrendingUp,
-    title: "Ad Management",
-    description: "Expert campaign optimization across all major platforms",
+    title: "Brand-Specific Engagement",
+    description: "Custom quiz themes that connect deeply with your brand and hit your audience's heartstrings",
   },
   {
     icon: Zap,
-    title: "CRM Integration",
-    description: "Seamless connection with your existing sales tools",
+    title: "Irresistible Incentives",
+    description: "Strategic offers like discounts, free guides, and exclusive deals that drive quiz completion",
   },
   {
     icon: BarChart,
-    title: "Reporting",
-    description: "Real-time dashboards showing exactly what's working",
+    title: "Instant Interaction Analytics",
+    description: "Real-time data showing engagement rates, quiz completions, and conversion metrics",
   },
   {
     icon: Settings,
-    title: "Optimization",
-    description: "Continuous improvement based on performance data",
+    title: "Continuous Optimization",
+    description: "We test and refine your funnels to maximize emotional impact and conversion rates",
   },
 ]
 
@@ -150,13 +150,13 @@ export default function Home() {
               variants={fadeIn}
               className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6"
             >
-              Conversion Systems That Run on Autopilot
+              Quiz Funnels That Create Instant Engagement
             </motion.h1>
             <motion.p
               variants={fadeIn}
               className="text-xl md:text-2xl text-muted-foreground mb-8"
             >
-              We build, launch, and optimize done-for-you lead generation funnels that fill your pipeline while you focus on closing deals
+              We build FOMO-driven quiz funnels using lead intelligence to target your exact clientele—creating emotional connections that drive immediate action
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
@@ -190,7 +190,7 @@ export default function Home() {
               How It Works
             </motion.h2>
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              Three simple steps to a full pipeline
+              From lead intelligence to conversion—fully automated
             </motion.p>
           </motion.div>
 
