@@ -1,5 +1,4 @@
 import { IndustryTemplate } from "@/components/industry-template"
-import { Sun } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Solar Installation Leads",
   subtitle: "Generate qualified solar appointments with homeowners ready to go green",
-    icon: <Sun className="h-16 w-16" />,
+  iconName: "Sun" as const,
   problems: [
     {
       title: "Unqualified Prospects",

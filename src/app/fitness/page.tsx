@@ -1,5 +1,4 @@
 import { IndustryTemplate } from "@/components/industry-template"
-import { Dumbbell } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Gym Member Acquisition",
   subtitle: "Turn trial members into long-term committed gym members",
-    icon: <Dumbbell className="h-16 w-16" />,
+  iconName: "Dumbbell" as const,
   problems: [
     {
       title: "Trial No-Shows",
