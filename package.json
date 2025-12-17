@@ -6,7 +6,9 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint"
+        "lint": "eslint",
+        "build:worker": "opennextjs-cloudflare",
+        "deploy": "opennextjs-cloudflare && wrangler deploy"
     },
     "dependencies": {
         "@hookform/resolvers": "^5.2.2",
