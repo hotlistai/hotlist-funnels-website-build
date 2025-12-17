@@ -1,5 +1,4 @@
 import { IndustryTemplate } from "@/components/industry-template"
-import { UtensilsCrossed } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Restaurant Staffing Funnels",
   subtitle: "Build a reliable pipeline of qualified kitchen and service staff",
-    icon: <UtensilsCrossed className="h-16 w-16" />,
+  iconName: "UtensilsCrossed" as const,
   problems: [
     {
       title: "Constant Turnover",

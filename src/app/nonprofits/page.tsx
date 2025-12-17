@@ -1,5 +1,4 @@
 import { IndustryTemplate } from "@/components/industry-template"
-import { Heart } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 const data = {
   title: "Nonprofit Donor Engagement",
   subtitle: "Convert website visitors into monthly donors and engaged volunteers",
-    icon: <Heart className="h-16 w-16" />,
+  iconName: "Heart" as const,
   problems: [
     {
       title: "One-Time Donors",
