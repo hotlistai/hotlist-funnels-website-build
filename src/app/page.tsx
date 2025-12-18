@@ -303,7 +303,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-1">
             {[
               {
-                icon: Home,
+                icon: HomeIcon,
                 title: "Homeowner DNA",
                 label: "B2C",
                 description: "We verify equity, ownership length, and distress signals before you ever pick up the phone.",
