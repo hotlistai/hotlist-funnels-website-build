@@ -8,99 +8,111 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Check, X } from "lucide-react"
 
+const springTransition = {
+  type: "spring",
+  stiffness: 500,
+  damping: 35,
+  mass: 1,
+}
+
 const fadeIn = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 10 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  transition: springTransition,
 }
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 }
 
 const included = [
-  "Custom landing page design & development",
-  "AI-powered lead qualification system",
-  "Multi-channel ad campaign management",
-  "CRM integration & automation setup",
-  "Real-time analytics dashboard",
-  "Monthly strategy & performance calls",
-  "Continuous A/B testing & optimization",
-  "Dedicated account manager",
-  "Email & SMS nurture sequences",
-  "Lead routing & notification setup",
-  "Campaign creative development",
-  "Conversion rate optimization",
-]
-
-const notIncluded = [
-  "Ad spend budget (paid directly to platforms)",
-  "Third-party software subscriptions",
-  "Phone system or call tracking services",
-]
-
-const faqs = [
-  {
-    question: "What's included in the setup fee?",
-    answer:
-      "The $2,500 setup covers strategy development, landing page design, funnel configuration, ad creative, CRM integration, and all technical setup to get your system running.",
-  },
-  {
-    question: "What does the monthly fee cover?",
-    answer:
-      "The $750/month covers ongoing campaign management, ad optimization, A/B testing, monthly strategy calls, reporting, and continuous improvements to maximize your ROI.",
-  },
-  {
-    question: "How much should I budget for ad spend?",
-    answer:
-      "We typically recommend starting with $1,500-3,000/month in ad spend, depending on your industry and goals. You pay ad costs directly to Facebook, Google, etc.",
-  },
-  {
-    question: "Is there a contract or commitment?",
-    answer:
-      "We require a 3-month minimum commitment to allow time for testing and optimization. After that, it's month-to-month with 30 days notice to cancel.",
-  },
-  {
-    question: "What kind of results can I expect?",
-    answer:
-      "Results vary by industry, but our clients typically see 50-100+ qualified leads per month with 3-5x return on ad spend after the first 60-90 days of optimization.",
-  },
-  {
-    question: "Do you work with businesses outside the US?",
-    answer:
-      "Yes, we work with clients globally. However, our campaigns perform best in English-speaking markets where our targeting and conversion tactics are proven.",
-  },
+  "Custom Foundry Landing Page Architecture",
+  "Perspective.co Logic Implementation",
+  "Loss Aversion Funnel Engineering",
+  "High-Velocity Ad Campaign Management",
+  "Precision Lead Routing & CRM Integration",
+  "Real-Time Conversion Analytics Dashboard",
+  "Iterative A/B Performance Forging",
+  "Dedicated Conversion Strategist",
+  "Rapid Onboarding (Under 7 Days)",
+  "Psychological Trigger Copywriting",
 ]
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
+      <section className="relative overflow-hidden pt-24 pb-32 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="text-center max-w-4xl mx-auto"
+            className="max-w-4xl"
           >
             <motion.h1
               variants={fadeIn}
-              className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6"
+              className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 uppercase leading-[0.9]"
             >
-              Simple, Transparent Pricing
+              INVESTMENT <br /><span className="text-primary">TIERS</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground mb-8"
+              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-2xl"
             >
-              One price, everything included. No hidden fees or surprises.
+              No complexity. Just conversion. One setup fee to forge the engine, one monthly fee to keep it redlined.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-32 border-b border-white/5 bg-[#0D0D0D]">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <Card className="rounded-none border-primary/50 bg-[#0A0A0A] border-2 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-4 py-1 uppercase tracking-widest">
+                High Velocity
+              </div>
+              <CardHeader className="text-center pb-12 pt-16">
+                <div className="mb-8">
+                  <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4">ONE-TIME FORGE FEE</div>
+                  <div className="text-7xl font-bold tracking-tighter text-foreground">$1,495</div>
+                </div>
+                <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4">MONTHLY ENGINE FEE</div>
+                <div className="text-5xl font-bold tracking-tighter text-primary">$1,495<span className="text-2xl text-muted-foreground">/MO</span></div>
+              </CardHeader>
+              <CardContent className="space-y-12 pb-16">
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-center text-muted-foreground">Architecture Specifications</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {included.map((item) => (
+                      <div key={item} className="flex items-start gap-3 group/item">
+                        <Check className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
+                        <span className="text-sm uppercase tracking-tight font-medium text-muted-foreground group-hover/item:text-foreground transition-colors">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-8">
+                  <Link href="/contact">
+                    <Button size="lg" className="w-full h-16 rounded-none bg-primary hover:bg-primary/90 text-xl font-bold tracking-tight uppercase">
+                      IGNITE THE ENGINE
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>
