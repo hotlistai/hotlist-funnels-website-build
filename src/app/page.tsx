@@ -47,7 +47,7 @@ const industryTabs = [
   {
     id: "real-estate",
     label: "Real Estate",
-    icon: Home,
+    icon: HomeIcon,
     headline: "Is your home losing $200/day in equity?",
     cta: "Find out now.",
     color: "from-emerald-500/20 to-emerald-600/5",
