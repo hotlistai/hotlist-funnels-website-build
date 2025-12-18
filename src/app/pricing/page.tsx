@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Check, X } from "lucide-react"
+import { Check, Zap, ArrowRight } from "lucide-react"
 
 const springTransition = {
   type: "spring",
@@ -29,17 +29,58 @@ const staggerContainer = {
   },
 }
 
-const included = [
-  "Custom Foundry Landing Page Architecture",
-  "Perspective.co Logic Implementation",
-  "Loss Aversion Funnel Engineering",
-  "High-Velocity Ad Campaign Management",
-  "Precision Lead Routing & CRM Integration",
-  "Real-Time Conversion Analytics Dashboard",
-  "Iterative A/B Performance Forging",
-  "Dedicated Conversion Strategist",
-  "Rapid Onboarding (Under 7 Days)",
-  "Psychological Trigger Copywriting",
+const plans = [
+  {
+    name: "The Engine Starter",
+    price: "$495",
+    setup: "$495",
+    description: "Perfect for businesses ready to capture their first high-intent leads.",
+    features: [
+      "1 Core Funnel",
+      "Basic Lead Intel",
+      "CRM Sync",
+      "Email Notifications",
+      "Mobile-Optimized Design",
+      "7-Day Onboarding",
+    ],
+    highlight: false,
+  },
+  {
+    name: "The Growth Accelerator",
+    price: "$995",
+    setup: "$995",
+    description: "For teams ready to dominate their market with full intelligence.",
+    features: [
+      "Unlimited Funnels",
+      "Full Lyft Lead Intelligence",
+      "5k Outreach Contacts",
+      "Advanced Analytics Dashboard",
+      "A/B Testing Engine",
+      "Priority Support",
+      "Custom Integrations",
+      "Dedicated Success Manager",
+    ],
+    highlight: true,
+  },
+]
+
+const faqs = [
+  {
+    question: "How fast can I launch?",
+    answer: "Our Engine deploys in 7 days or less. We handle the technical lift while you focus on closing deals.",
+  },
+  {
+    question: "What's included in Lead Intelligence?",
+    answer: "Full Lyft Lead Intelligence includes homeowner verification, equity analysis, distress signals, and B2B intent mapping based on hiring signals and tech-stack data.",
+  },
+  {
+    question: "Can I upgrade later?",
+    answer: "Absolutely. Start with the Engine Starter and upgrade to Growth Accelerator anytime. We'll prorate your setup fee.",
+  },
+  {
+    question: "What CRMs do you integrate with?",
+    answer: "We connect with all major CRMs including Salesforce, HubSpot, Pipedrive, and can build custom integrations on the Growth Accelerator plan.",
+  },
 ]
 
 export default function PricingPage() {
@@ -48,6 +89,7 @@ export default function PricingPage() {
       <Navigation />
 
       <section className="relative overflow-hidden pt-24 pb-32 border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,122,255,0.05),transparent_50%)]" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
             initial="initial"
@@ -55,15 +97,22 @@ export default function PricingPage() {
             variants={staggerContainer}
             className="max-w-4xl"
           >
+            <motion.div
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium mb-8"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
+              Simple, Transparent Pricing
+            </motion.div>
             <motion.h1
               variants={fadeIn}
-              className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 uppercase leading-[0.9]"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 uppercase leading-[0.9]"
             >
-              INVESTMENT <br /><span className="text-primary">TIERS</span>
+              The Pricing <br /><span className="text-primary">Engine</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-2xl"
+              className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl"
             >
               No complexity. Just conversion. One setup fee to forge the engine, one monthly fee to keep it redlined.
             </motion.p>
@@ -72,122 +121,78 @@ export default function PricingPage() {
       </section>
 
       <section className="py-32 border-b border-white/5 bg-[#0D0D0D]">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeIn}
-          >
-            <Card className="rounded-none border-primary/50 bg-[#0A0A0A] border-2 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-4 py-1 uppercase tracking-widest">
-                High Velocity
-              </div>
-              <CardHeader className="text-center pb-12 pt-16">
-                <div className="mb-8">
-                  <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4">ONE-TIME FORGE FEE</div>
-                  <div className="text-7xl font-bold tracking-tighter text-foreground">$1,495</div>
-                </div>
-                <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4">MONTHLY ENGINE FEE</div>
-                <div className="text-5xl font-bold tracking-tighter text-primary">$1,495<span className="text-2xl text-muted-foreground">/MO</span></div>
-              </CardHeader>
-              <CardContent className="space-y-12 pb-16">
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-center text-muted-foreground">Architecture Specifications</h3>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {included.map((item) => (
-                      <div key={item} className="flex items-start gap-3 group/item">
-                        <Check className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
-                        <span className="text-sm uppercase tracking-tight font-medium text-muted-foreground group-hover/item:text-foreground transition-colors">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-8">
-                  <Link href="/contact">
-                    <Button size="lg" className="w-full h-16 rounded-none bg-primary hover:bg-primary/90 text-xl font-bold tracking-tight uppercase">
-                      IGNITE THE ENGINE
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-1">
+            {plans.map((plan, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...springTransition, delay: i * 0.1 }}
+              >
+                <Card className={`h-full rounded-none bg-[#0A0A0A] border relative overflow-hidden ${
+                  plan.highlight ? "border-accent/50 border-2" : "border-white/5"
+                }`}>
+                  {plan.highlight && (
+                    <div className="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold px-4 py-1 uppercase tracking-widest">
+                      Popular
+                    </div>
+                  )}
+                  <CardHeader className="pt-12 pb-8">
+                    <CardTitle className="text-lg uppercase tracking-widest text-muted-foreground mb-4">
+                      {plan.name}
+                    </CardTitle>
+                    <div className="text-5xl font-bold tracking-tighter mb-2">
+                      {plan.price}<span className="text-xl text-muted-foreground">/mo</span>
+                    </div>
+                    <div className="text-sm text-muted-foreground mb-4">
+                      + {plan.setup} Setup
+                    </div>
+                    <CardDescription className="text-base">
+                      {plan.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pb-12">
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature, j) => (
+                        <li key={j} className="flex items-center gap-3">
+                          <Check className={`h-4 w-4 flex-shrink-0 ${plan.highlight ? "text-accent" : "text-primary"}`} />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href="/contact">
+                      <Button className={`w-full rounded-none font-bold tracking-tight h-14 text-base ${
+                        plan.highlight
+                          ? "bg-accent hover:bg-accent/90"
+                          : "bg-primary hover:bg-primary/90"
+                      }`}>
+                        GET STARTED <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-24 border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeIn}
-          >
-            <Card className="border-2">
-              <CardHeader className="text-center pb-8">
-                <div className="mb-6">
-                  <div className="text-6xl font-serif font-semibold mb-3">$2,500</div>
-                  <div className="text-lg text-muted-foreground">One-time setup fee</div>
-                </div>
-                <div className="text-5xl font-serif font-semibold mb-3">$750/mo</div>
-                <CardDescription className="text-xl">
-                  Full service management & optimization
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-lg mb-4">What's Included</h3>
-                  <div className="space-y-3">
-                    {included.map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t">
-                  <h3 className="font-semibold text-lg mb-4">Not Included</h3>
-                  <div className="space-y-3">
-                    {notIncluded.map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <X className="h-5 w-5 mt-0.5 flex-shrink-0 text-muted-foreground" />
-                        <span className="text-muted-foreground">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-6">
-                  <Link href="/contact">
-                    <Button size="lg" className="w-full">
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-muted/50">
+      <section className="py-32 border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center mb-12"
+            className="mb-16"
           >
             <motion.h2
               variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
+              className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 uppercase"
             >
-              Frequently Asked Questions
+              Frequently Asked <span className="text-primary">Questions</span>
             </motion.h2>
           </motion.div>
 
@@ -196,13 +201,13 @@ export default function PricingPage() {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="space-y-6"
+            className="space-y-1"
           >
             {faqs.map((faq, i) => (
               <motion.div key={i} variants={fadeIn}>
-                <Card>
+                <Card className="rounded-none border-white/5 bg-[#0A0A0A] hover:bg-white/5 transition-all">
                   <CardHeader>
-                    <CardTitle className="text-xl">{faq.question}</CardTitle>
+                    <CardTitle className="text-lg font-bold uppercase tracking-tight">{faq.question}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">{faq.answer}</p>
@@ -214,7 +219,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-32 bg-accent/5">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial="initial"
@@ -224,17 +229,17 @@ export default function PricingPage() {
           >
             <motion.h2
               variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-6"
+              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 uppercase"
             >
-              Ready to Get Started?
+              Ready to <span className="text-accent">Ignite</span>?
             </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-8">
-              Book a demo to see how we can build your conversion system
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12">
+              Book a demo to see how we can recover your lost revenue.
             </motion.p>
             <motion.div variants={fadeIn}>
               <Link href="/contact">
-                <Button size="lg" className="text-lg h-12 px-8">
-                  Book Your Demo
+                <Button size="lg" className="text-xl h-16 px-12 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight">
+                  BOOK YOUR DEMO
                 </Button>
               </Link>
             </motion.div>
