@@ -29,54 +29,30 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="border-b border-border bg-background sticky top-0 z-50">
+    <nav className="glass sticky top-0 z-50 border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-semibold">
-            Hotlist Engine
+        <div className="flex h-20 items-center justify-between">
+          <Link href="/" className="text-2xl font-bold tracking-tighter uppercase">
+            HOTLIST <span className="text-primary">ENGINE</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent">
-                    Solutions
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                      {solutions.map((solution) => (
-                        <NavigationMenuLink key={solution.href} asChild>
-                          <Link
-                            href={solution.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium leading-none">
-                              {solution.name}
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
+          <div className="hidden md:flex items-center gap-12">
             <Link
               href="/how-it-works"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
             >
-              How It Works
+              Architecture
             </Link>
             <Link
               href="/pricing"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
             >
               Pricing
             </Link>
             <Link href="/contact">
-              <Button>Book a Demo</Button>
+              <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight">
+                BOOK DEMO
+              </Button>
             </Link>
           </div>
 
