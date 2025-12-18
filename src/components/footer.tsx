@@ -13,26 +13,26 @@ const solutions = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="font-serif text-xl font-semibold mb-4">
-              Hotlist Engine
+    <footer className="border-t border-white/5 bg-[#0A0A0A] py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
+          <div className="space-y-6">
+            <div className="text-2xl font-bold tracking-tighter uppercase">
+              HOTLIST <span className="text-primary">ENGINE</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Conversion systems that run on autopilot
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Forging high-velocity conversion systems. Speed over sprawl. Clarity over complexity.
             </p>
           </div>
 
           <div>
-            <h3 className="font-medium mb-4">Solutions</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Solutions</h3>
+            <ul className="space-y-4">
               {solutions.map((solution) => (
                 <li key={solution.href}>
                   <Link
                     href={solution.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
                   >
                     {solution.name}
                   </Link>
@@ -42,20 +42,20 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-medium mb-4">Company</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Architecture</h3>
+            <ul className="space-y-4">
               <li>
                 <Link
                   href="/how-it-works"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
                 >
-                  How It Works
+                  Philosophy
                 </Link>
               </li>
               <li>
                 <Link
                   href="/pricing"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
                 >
                   Pricing
                 </Link>
@@ -63,41 +63,31 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
                 >
-                  Contact
+                  Connect
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-medium mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Status</h3>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground uppercase tracking-tight font-medium">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              All Systems Operational
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Hotlist Engine. All rights reserved.
+        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
+            © {new Date().getFullYear()} HOTLIST ENGINE // PRECISION FORGED
           </p>
+          <div className="flex gap-8">
+            <Link href="/privacy" className="text-xs font-mono text-muted-foreground hover:text-primary uppercase tracking-widest">Privacy</Link>
+            <Link href="/terms" className="text-xs font-mono text-muted-foreground hover:text-primary uppercase tracking-widest">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>
