@@ -17,8 +17,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Hotlist Engine - Conversion Systems That Run on Autopilot",
-  description: "Done-for-you lead generation service. Custom-built conversion systems that fill your pipeline on autopilot.",
+  title: "Hotlist Engine | High-Velocity Conversion",
+  description: "Speed over sprawl. Clarity over complexity. We forge precision-engineered quiz funnels designed for the modern attention span.",
 };
 
 export default function RootLayout({
