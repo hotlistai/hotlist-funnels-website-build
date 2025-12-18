@@ -17,115 +17,143 @@ import {
   Zap,
 } from "lucide-react"
 
+const springTransition = {
+  type: "spring",
+  stiffness: 500,
+  damping: 35,
+  mass: 1,
+}
+
 const fadeIn = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 10 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+  transition: springTransition,
 }
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 }
 
 const timeline = [
   {
-    phase: "Phase 1: Discovery & Strategy",
-    duration: "Week 1",
+    phase: "01 // DISCOVERY",
+    duration: "48 HOURS",
     icon: MessageSquare,
     steps: [
-      "Kickoff call to understand your business, goals, and target market",
-      "Competitive analysis of your industry and market",
-      "Customer avatar development and messaging framework",
-      "Conversion funnel strategy and tech stack planning",
+      "Psychological profiling of your ideal customer avatar",
+      "Competitive vulnerability mapping",
+      "Conversion engine blueprinting",
+      "Loss aversion strategy development",
     ],
   },
   {
-    phase: "Phase 2: Build & Design",
-    duration: "Weeks 2-3",
+    phase: "02 // FORGING",
+    duration: "72 HOURS",
     icon: Settings,
     steps: [
-      "Custom landing page design optimized for conversions",
-      "Lead qualification workflow and AI scoring setup",
-      "CRM integration and automation configuration",
-      "Ad creative development (copy, images, targeting)",
+      "High-velocity landing page architecture",
+      "Perspective.co logic implementation",
+      "Mobile-first interaction engineering",
+      "Urgency-trigger copywriting",
     ],
   },
   {
-    phase: "Phase 3: Launch",
-    duration: "Week 4",
+    phase: "03 // IGNITION",
+    duration: "24 HOURS",
     icon: Rocket,
     steps: [
-      "Quality assurance testing across all devices",
-      "Ad campaign launch across chosen platforms",
-      "Initial monitoring and rapid optimization",
-      "Dashboard setup and reporting access",
+      "Stress-testing conversion paths",
+      "Multi-platform pixel deployment",
+      "Low-latency infrastructure verification",
+      "Live data stream monitoring",
     ],
   },
   {
-    phase: "Phase 4: Optimize & Scale",
-    duration: "Ongoing",
+    phase: "04 // OPTIMIZATION",
+    duration: "ONGOING",
     icon: TrendingUp,
     steps: [
-      "Daily campaign monitoring and bid adjustments",
-      "A/B testing of landing pages and ad creative",
-      "Monthly strategy calls to review performance",
-      "Continuous scaling of winning campaigns",
+      "Real-time bid calibration",
+      "Iterative A/B performance forging",
+      "Revenue-driven scaling",
+      "Weekly velocity reports",
     ],
-  },
-]
-
-const features = [
-  {
-    icon: Target,
-    title: "Strategic Planning",
-    description: "Data-driven strategy tailored to your market and goals",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Expert Execution",
-    description: "Professional design, copywriting, and campaign management",
-  },
-  {
-    icon: BarChart3,
-    title: "Performance Tracking",
-    description: "Real-time dashboards and monthly performance reviews",
-  },
-  {
-    icon: Zap,
-    title: "Continuous Improvement",
-    description: "Ongoing testing and optimization to maximize ROI",
   },
 ]
 
 export default function HowItWorksPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
+      <section className="relative overflow-hidden pt-24 pb-32 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="text-center max-w-4xl mx-auto"
+            className="max-w-4xl"
           >
             <motion.h1
               variants={fadeIn}
-              className="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-6"
+              className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 uppercase leading-[0.9]"
             >
-              How It Works
+              SYSTEM <br /><span className="text-primary">ARCHITECTURE</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground mb-8"
+              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-2xl"
             >
-              From strategy to scale, we handle everything so you can focus on closing deals
+              Our process is stripped of bureaucracy and optimized for rapid deployment. We forge conversion engines at the speed of thought.
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-32 border-b border-white/5 bg-[#0D0D0D]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="space-y-1"
+          >
+            {timeline.map((phase, i) => (
+              <motion.div key={i} variants={fadeIn}>
+                <Card className="rounded-none border-white/5 bg-[#0A0A0A] hover:bg-white/5 transition-all duration-100 group border">
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                      <div className="flex items-center gap-6">
+                        <div className="text-primary group-hover:text-accent transition-colors">
+                          <phase.icon className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="text-3xl font-bold uppercase tracking-tight">
+                          {phase.phase}
+                        </CardTitle>
+                      </div>
+                      <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest bg-white/5 px-3 py-1 border border-white/10">
+                        {phase.duration}
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="grid md:grid-cols-2 gap-4">
+                      {phase.steps.map((step, j) => (
+                        <li key={j} className="flex items-start gap-4 text-muted-foreground group-hover:text-foreground transition-colors">
+                          <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary group-hover:text-accent transition-colors" />
+                          <span className="text-base uppercase tracking-tight font-medium">{step}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
