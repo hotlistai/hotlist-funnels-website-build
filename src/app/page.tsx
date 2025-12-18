@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import {
-  Home,
+  Home as HomeIcon,
   Sun,
   Building2,
   Zap,
