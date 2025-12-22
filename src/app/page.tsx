@@ -280,6 +280,191 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Mobile-First Funnels Section */}
+      <section className="py-32 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div
+                variants={fadeIn}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-primary"
+              >
+                Conversion Engineering
+              </motion.div>
+              <motion.h2
+                variants={fadeIn}
+                className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[0.9] text-[#121212]"
+              >
+                Mobile-First Funnels <br /><span className="text-primary italic">That Convert.</span>
+              </motion.h2>
+              <motion.div variants={fadeIn} className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                <p>
+                  <strong className="text-[#121212]">Speed is everything.</strong> We build the fastest funnels in the industry. Most funnels get abandoned within seconds because they&apos;re too slow. Users tap out before they even see the first question.
+                </p>
+                <p>
+                  We use Next.js and React to build the fastest-loading funnels in the industry. Lightning-fast page transitions keep users engaged from start to finish.
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeIn} className="grid grid-cols-2 gap-8 mt-12 border-t border-border pt-12">
+                <div>
+                  <div className="text-4xl font-bold text-primary tracking-tighter mb-1">&lt;1s</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Load Time</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-primary tracking-tighter mb-1">3x</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Better Engagement</div>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeIn} className="mt-12">
+                <Button variant="link" className="p-0 h-auto font-bold uppercase tracking-widest text-[10px] text-[#121212] flex items-center gap-2">
+                  Next: Psychology of FOMO <ArrowRight className="h-3 w-3" />
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { title: "Appointment", bg: "bg-blue-600", color: "text-white" },
+                  { title: "VSL Demo", bg: "bg-[#121212]", color: "text-white" },
+                  { title: "Recruiting", bg: "bg-amber-500", color: "text-white" },
+                  { title: "Lead Magnet", bg: "bg-blue-800", color: "text-white" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ ...springTransition, delay: i * 0.1 }}
+                    className={`${item.bg} aspect-[4/5] p-6 relative flex flex-col justify-between overflow-hidden group border border-border/10`}
+                  >
+                    <div className="z-10">
+                      <div className={`text-[10px] font-bold uppercase tracking-widest opacity-80 ${item.color}`}>{item.title}</div>
+                      <div className={`mt-2 text-xs font-bold leading-tight ${item.color}`}>
+                        {i === 0 && "Showcase your offer, qualify leads."}
+                        {i === 1 && "Guide potential clients through VSL."}
+                        {i === 2 && "Showcase company culture & recruiting."}
+                        {i === 3 && "Showcase lead magnet, capture details."}
+                      </div>
+                    </div>
+                    {/* Mock Phone UI */}
+                    <div className="relative mt-4 bg-white rounded-t-xl p-2 h-full translate-y-4 group-hover:translate-y-2 transition-transform shadow-2xl">
+                      <div className="w-full h-full border border-slate-100 rounded-t-lg bg-slate-50 flex flex-col p-2 gap-2 overflow-hidden">
+                        <div className="h-2 w-8 bg-slate-200 rounded-full mx-auto mb-2" />
+                        <div className="h-1 bg-primary/20 w-full rounded-full" />
+                        <div className="h-3 bg-slate-200 w-3/4 rounded-sm" />
+                        <div className="grid grid-cols-2 gap-1">
+                          <div className="h-12 bg-white border border-slate-100" />
+                          <div className="h-12 bg-white border border-slate-100" />
+                        </div>
+                        <div className="h-8 bg-primary w-full rounded-none mt-auto" />
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4 h-5 w-5 rounded-full bg-white/20 flex items-center justify-center">
+                      <Zap className="h-2 w-2 text-white" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Psychology of FOMO Section */}
+      <section className="py-32 border-b border-border bg-[#121212] text-white overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.15),transparent_70%)]" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div
+                variants={fadeIn}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent border border-accent/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-white"
+              >
+                Behavioral Psychology
+              </motion.div>
+              <motion.h2
+                variants={fadeIn}
+                className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[0.9]"
+              >
+                The Psychology <br /><span className="text-accent italic">of FOMO.</span>
+              </motion.h2>
+              <motion.p variants={fadeIn} className="text-xl text-white/60 mb-12 max-w-xl">
+                We leverage Loss Aversion and Scarcity to drive immediate action.
+              </motion.p>
+
+              <div className="space-y-12">
+                <motion.div variants={fadeIn} className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent/20 border border-accent/30 flex items-center justify-center">
+                    <TrendingUp className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Loss Aversion</h4>
+                    <p className="text-white/60 leading-relaxed">
+                      Homeowners fear losing $50k in home value more than they desire saving $10k on repairs. We frame your offer to trigger this primal response.
+                    </p>
+                  </div>
+                </motion.div>
+                <motion.div variants={fadeIn} className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent/20 border border-accent/30 flex items-center justify-center">
+                    <Clock className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Scarcity</h4>
+                    <p className="text-white/60 leading-relaxed">
+                      &quot;Only 3 assessment slots left in your area&quot; creates urgency that converts 3x better. Real-time data feeds make it authentic and powerful.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={springTransition}
+              className="relative aspect-square border border-white/10 bg-white/5 p-8 flex flex-col justify-center items-center text-center"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-accent" />
+              <div className="mb-8">
+                <Users className="h-16 w-16 text-accent mx-auto mb-6" />
+                <div className="text-sm font-bold uppercase tracking-widest text-accent mb-2">LIVE DATA FEED</div>
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+                  12 People Active
+                </div>
+                <p className="text-white/60">Currently viewing offers in <span className="text-white font-bold">your local area</span></p>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-6 w-full max-w-sm">
+                <div className="flex justify-between items-center mb-4">
+                  <div className="text-[10px] font-bold uppercase tracking-widest">Available Slots</div>
+                  <div className="text-accent font-bold">03/10</div>
+                </div>
+                <div className="h-2 bg-white/10 rounded-none overflow-hidden">
+                  <motion.div
+                    className="h-full bg-accent"
+                    initial={{ width: "100%" }}
+                    whileInView={{ width: "30%" }}
+                    transition={{ duration: 2, delay: 0.5 }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Intelligence Feature Grid */}
       <section className="py-32 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
