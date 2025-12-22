@@ -56,8 +56,8 @@ const timeline = [
     icon: Settings,
     steps: [
       "High-velocity landing page architecture",
-      "Perspective.co logic implementation",
       "Mobile-first interaction engineering",
+      "Logic-driven funnel implementation",
       "Urgency-trigger copywriting",
     ],
   },
@@ -85,12 +85,37 @@ const timeline = [
   },
 ]
 
+const features = [
+  {
+    title: "Psychological Edge",
+    description: "Built on principles of loss aversion and urgency triggers.",
+    icon: Target,
+  },
+  {
+    title: "High Velocity",
+    description: "Sub-1s load times designed for the mobile-first era.",
+    icon: Zap,
+  },
+  {
+    title: "Lead Intelligence",
+    description: "Verify intent and data before the lead even hits your CRM.",
+    icon: BarChart3,
+  },
+  {
+    title: "Seamless Flow",
+    description: "Frictionless transitions that maintain conversion momentum.",
+    icon: Rocket,
+  },
+]
+
 export default function HowItWorksPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <Navigation />
 
-      <section className="relative overflow-hidden pt-24 pb-32 border-b border-white/5">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-20 pb-32 border-b border-border">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(0,122,255,0.08),transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
             initial="initial"
@@ -98,23 +123,31 @@ export default function HowItWorksPage() {
             variants={staggerContainer}
             className="max-w-4xl"
           >
+            <motion.div
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-secondary border border-border text-[10px] font-bold uppercase tracking-widest mb-8 text-black"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
+              Operational Protocol
+            </motion.div>
             <motion.h1
               variants={fadeIn}
-              className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 uppercase leading-[0.9]"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 lowercase leading-[0.85] text-[#121212]"
             >
-              SYSTEM <br /><span className="text-primary">ARCHITECTURE</span>
+              System <br /><span className="text-primary italic">Architecture.</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-2xl"
+              className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              Our process is stripped of bureaucracy and optimized for rapid deployment. We forge conversion engines at the speed of thought.
+              Our process is stripped of bureaucracy and optimized for rapid deployment. We forge conversion engines at high velocity, moving from insight to ignition in days, not months.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-32 border-b border-white/5 bg-[#0D0D0D]">
+      {/* Timeline Section */}
+      <section className="py-32 border-b border-border bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -125,28 +158,28 @@ export default function HowItWorksPage() {
           >
             {timeline.map((phase, i) => (
               <motion.div key={i} variants={fadeIn}>
-                <Card className="rounded-none border-white/5 bg-[#0A0A0A] hover:bg-white/5 transition-all duration-100 group border">
-                  <CardHeader>
+                <Card className="rounded-none border-border bg-white hover:bg-slate-50 transition-all duration-100 group border shadow-sm">
+                  <CardHeader className="py-10">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                       <div className="flex items-center gap-6">
                         <div className="text-primary group-hover:text-accent transition-colors">
                           <phase.icon className="h-8 w-8" />
                         </div>
-                        <CardTitle className="text-3xl font-bold uppercase tracking-tight">
+                        <CardTitle className="text-3xl md:text-4xl font-bold uppercase tracking-tighter text-[#121212]">
                           {phase.phase}
                         </CardTitle>
                       </div>
-                      <div className="text-sm font-mono text-muted-foreground uppercase tracking-widest bg-white/5 px-3 py-1 border border-white/10">
+                      <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest bg-slate-100 px-4 py-2 border border-border">
                         {phase.duration}
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="grid md:grid-cols-2 gap-4">
+                  <CardContent className="pb-10">
+                    <ul className="grid md:grid-cols-2 gap-6">
                       {phase.steps.map((step, j) => (
-                        <li key={j} className="flex items-start gap-4 text-muted-foreground group-hover:text-foreground transition-colors">
+                        <li key={j} className="flex items-start gap-4 text-muted-foreground group-hover:text-[#121212] transition-colors">
                           <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary group-hover:text-accent transition-colors" />
-                          <span className="text-base uppercase tracking-tight font-medium">{step}</span>
+                          <span className="text-sm uppercase tracking-tight font-bold">{step}</span>
                         </li>
                       ))}
                     </ul>
@@ -158,67 +191,24 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="py-24 border-b border-border">
+      {/* Features Grid */}
+      <section className="py-32 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="space-y-12"
-          >
-            {timeline.map((phase, i) => (
-              <motion.div key={i} variants={fadeIn}>
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <phase.icon className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-2xl">{phase.phase}</CardTitle>
-                          <span className="text-sm font-medium text-muted-foreground">
-                            {phase.duration}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      {phase.steps.map((step, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
-                          <span>{step}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-muted/50 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-16"
+            className="text-center mb-24"
           >
             <motion.h2
               variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-4"
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase text-[#121212]"
             >
-              What Sets Us Apart
+              What Sets Us <span className="text-primary italic">Apart</span>
             </motion.h2>
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              More than just ad management
+              More than just lead capture. It&apos;s conversion engineering.
             </motion.p>
           </motion.div>
 
@@ -227,21 +217,25 @@ export default function HowItWorksPage() {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border shadow-xl"
           >
             {features.map((feature) => (
               <motion.div key={feature.title} variants={fadeIn}>
-                <Card className="h-full text-center">
+                <Card className="h-full rounded-none border-none bg-white hover:bg-slate-50 transition-all duration-100 group p-4">
                   <CardHeader>
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <feature.icon className="h-6 w-6" />
+                    <div className="flex justify-center mb-8">
+                      <div className="p-4 bg-primary/5 text-primary group-hover:text-accent transition-colors">
+                        <feature.icon className="h-8 w-8" />
                       </div>
                     </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold uppercase tracking-tight text-[#121212] leading-tight">
+                      {feature.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">{feature.description}</CardDescription>
+                    <CardDescription className="text-sm font-medium leading-relaxed group-hover:text-[#121212] transition-colors">
+                      {feature.description}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -250,7 +244,8 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="py-24">
+      {/* CTA Section */}
+      <section className="py-32 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial="initial"
@@ -260,17 +255,17 @@ export default function HowItWorksPage() {
           >
             <motion.h2
               variants={fadeIn}
-              className="font-serif text-4xl md:text-5xl font-semibold mb-6"
+              className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 uppercase text-[#121212]"
             >
-              Ready to Get Started?
+              Ready to <span className="text-accent italic">Ignite</span>?
             </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-8">
-              Book a demo to see how we can build your conversion system
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12">
+              Book a deployment demo to see how we can build your high-velocity conversion system.
             </motion.p>
             <motion.div variants={fadeIn}>
               <Link href="/contact">
-                <Button size="lg" className="text-lg h-12 px-8">
-                  Book Your Demo
+                <Button size="lg" className="text-xl h-20 px-16 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white shadow-xl">
+                  BOOK YOUR DEMO
                 </Button>
               </Link>
             </motion.div>
