@@ -13,26 +13,26 @@ const solutions = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-[#0A0A0A] py-24">
+    <footer className="border-t border-border bg-slate-50 py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
           <div className="space-y-6">
-            <div className="text-2xl font-bold tracking-tighter uppercase">
-              HOTLIST <span className="text-primary">ENGINE</span>
+            <div className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
+              HOTLIST <span className="text-primary italic">ENGINE</span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs font-medium">
               Forging high-velocity conversion systems. Speed over sprawl. Clarity over complexity.
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Solutions</h3>
+            <h3 className="text-[10px] font-bold uppercase tracking-widest mb-8 text-[#121212]">Solutions</h3>
             <ul className="space-y-4">
               {solutions.map((solution) => (
                 <li key={solution.href}>
                   <Link
                     href={solution.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
                   >
                     {solution.name}
                   </Link>
@@ -42,12 +42,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Architecture</h3>
+            <h3 className="text-[10px] font-bold uppercase tracking-widest mb-8 text-[#121212]">Architecture</h3>
             <ul className="space-y-4">
               <li>
                 <Link
                   href="/how-it-works"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
                 >
                   Philosophy
                 </Link>
@@ -55,7 +55,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
                 >
                   Pricing
                 </Link>
@@ -63,7 +63,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-tight font-medium"
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
                 >
                   Connect
                 </Link>
@@ -72,21 +72,21 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-8 text-foreground">Status</h3>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground uppercase tracking-tight font-medium">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest mb-8 text-[#121212]">Status</h3>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground uppercase tracking-widest font-bold">
               <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               All Systems Operational
             </div>
           </div>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
+        <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
             © {new Date().getFullYear()} HOTLIST ENGINE // PRECISION FORGED
           </p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="text-xs font-mono text-muted-foreground hover:text-primary uppercase tracking-widest">Privacy</Link>
-            <Link href="/terms" className="text-xs font-mono text-muted-foreground hover:text-primary uppercase tracking-widest">Terms</Link>
+            <Link href="/privacy" className="text-[10px] font-bold text-muted-foreground hover:text-primary uppercase tracking-widest">Privacy</Link>
+            <Link href="/terms" className="text-[10px] font-bold text-muted-foreground hover:text-primary uppercase tracking-widest">Terms</Link>
           </div>
         </div>
       </div>

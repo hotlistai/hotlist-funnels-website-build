@@ -29,28 +29,28 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="glass sticky top-0 z-50 border-b border-white/5">
+    <nav className="glass sticky top-0 z-50 border-b border-border bg-white/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="text-2xl font-bold tracking-tighter uppercase">
-            HOTLIST <span className="text-primary">ENGINE</span>
+          <Link href="/" className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
+            HOTLIST <span className="text-primary italic">ENGINE</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-12">
             <Link
               href="/how-it-works"
-              className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+              className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
             >
               Architecture
             </Link>
             <Link
               href="/pricing"
-              className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+              className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
             >
               Pricing
             </Link>
             <Link href="/contact">
-              <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight">
+              <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight text-white text-xs uppercase letter-spacing-widest">
                 BOOK DEMO
               </Button>
             </Link>
@@ -58,14 +58,14 @@ export function Navigation() {
 
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-[#121212]">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
+            <SheetContent side="right" className="w-[300px] bg-white">
               <div className="flex flex-col gap-6 mt-6">
                 <div className="flex flex-col gap-4">
-                  <div className="font-medium text-sm text-muted-foreground">
+                  <div className="font-bold text-[10px] uppercase tracking-widest text-muted-foreground">
                     Solutions
                   </div>
                   <div className="flex flex-col gap-2 pl-4">
@@ -73,7 +73,7 @@ export function Navigation() {
                       <Link
                         key={solution.href}
                         href={solution.href}
-                        className="text-sm hover:text-foreground transition-colors"
+                        className="text-sm font-bold uppercase tracking-tight text-[#121212] hover:text-primary transition-colors"
                         onClick={() => setMobileOpen(false)}
                       >
                         {solution.name}
@@ -83,20 +83,20 @@ export function Navigation() {
                 </div>
                 <Link
                   href="/how-it-works"
-                  className="text-sm font-medium"
+                  className="text-xs font-bold uppercase tracking-widest text-[#121212]"
                   onClick={() => setMobileOpen(false)}
                 >
-                  How It Works
+                  Architecture
                 </Link>
                 <Link
                   href="/pricing"
-                  className="text-sm font-medium"
+                  className="text-xs font-bold uppercase tracking-widest text-[#121212]"
                   onClick={() => setMobileOpen(false)}
                 >
                   Pricing
                 </Link>
                 <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full">Book a Demo</Button>
+                  <Button className="w-full rounded-none bg-primary hover:bg-primary/90 font-bold text-white text-xs uppercase py-6">Book a Demo</Button>
                 </Link>
               </div>
             </SheetContent>
