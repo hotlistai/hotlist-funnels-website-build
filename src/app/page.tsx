@@ -143,7 +143,7 @@ export default function Home() {
               variants={fadeIn}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              Most funnels are leaky buckets. Hotlist Engine is a high-velocity capture system that uses Lead Intelligence to identify, qualify, and convert your best customers in under 60 seconds.
+              Most funnels are leaky buckets. HOTLIST FUNNELS is a high-velocity capture system that uses Lead Intelligence to identify, qualify, and convert your best customers in under 60 seconds.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -177,7 +177,7 @@ export default function Home() {
               The <span className="text-primary italic">1 Second</span> Difference
             </motion.h2>
             <motion.p variants={fadeIn} className="text-muted-foreground text-lg">
-              Drag to compare legacy forms vs. Hotlist Engine
+              Drag to compare legacy forms vs. HOTLIST FUNNELS
             </motion.p>
           </motion.div>
 
@@ -207,14 +207,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hotlist Engine Side */}
+            {/* HOTLIST FUNNELS Side */}
             <div
               className="absolute inset-0 bg-white overflow-hidden"
               style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
             >
               <div className="p-8 h-full flex flex-col">
                 <div className="text-primary font-bold text-[10px] uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Zap className="h-3 w-3" /> HOTLIST ENGINE
+                  <Zap className="h-3 w-3" /> HOTLIST FUNNELS
                 </div>
                 <div className="glass-card p-6 flex-1 flex flex-col justify-center bg-slate-50/50">
                   <div className="mb-6">
@@ -622,7 +622,7 @@ export default function Home() {
               variants={fadeIn}
               className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase text-[#121212]"
             >
-              The Pricing <span className="text-primary italic">Engine</span>
+              The Pricing <span className="text-primary italic">FUNNELS</span>
             </motion.h2>
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
               Simple. Transparent. Results-driven.
@@ -632,7 +632,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-px bg-border border border-border max-w-4xl mx-auto shadow-2xl">
             {[
               {
-                name: "The Engine Starter",
+                name: "The FUNNELS Starter",
                 price: "$495",
                 setup: "$495",
                 features: ["1 Core Funnel", "Basic Lead Intel", "CRM Sync"],

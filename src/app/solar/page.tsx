@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/industry-template"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Solar Installation Lead Generation | Hotlist Engine",
+  title: "Solar Installation Lead Generation | HOTLIST FUNNELS",
   description: "Generate qualified solar installation appointments with our done-for-you lead generation system.",
 }
 

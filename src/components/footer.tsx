@@ -18,7 +18,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
           <div className="space-y-6">
             <div className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
-              HOTLIST <span className="text-primary italic">ENGINE</span>
+              HOTLIST <span className="text-primary italic">FUNNELS</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs font-medium">
               Forging high-velocity conversion systems. Speed over sprawl. Clarity over complexity.
@@ -82,7 +82,7 @@ export function Footer() {
 
         <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            © {new Date().getFullYear()} HOTLIST ENGINE // PRECISION FORGED
+            © {new Date().getFullYear()} HOTLIST FUNNELS // PRECISION FORGED
           </p>
           <div className="flex gap-8">
             <Link href="/privacy" className="text-[10px] font-bold text-muted-foreground hover:text-primary uppercase tracking-widest">Privacy</Link>

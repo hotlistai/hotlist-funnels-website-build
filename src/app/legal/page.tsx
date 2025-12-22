@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/industry-template"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Law Firm Client Acquisition | Hotlist Engine",
+  title: "Law Firm Client Acquisition | HOTLIST FUNNELS",
   description: "Attract and qualify potential clients for your legal practice with our done-for-you lead generation system.",
 }
 

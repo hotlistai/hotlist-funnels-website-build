@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/industry-template"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Blue Collar Recruiting | Hotlist Engine",
+  title: "Blue Collar Recruiting | HOTLIST FUNNELS",
   description: "Recruit reliable workers for manufacturing and warehousing with our done-for-you recruiting system.",
 }
 

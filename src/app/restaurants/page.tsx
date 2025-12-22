@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/industry-template"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Restaurant Staffing Funnels | Hotlist Engine",
+  title: "Restaurant Staffing Funnels | HOTLIST FUNNELS",
   description: "Build a pipeline of qualified kitchen and service staff with our done-for-you recruiting system.",
 }
 

@@ -17,7 +17,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Hotlist Engine | High-Velocity Conversion",
+  title: "HOTLIST FUNNELS | High-Velocity Conversion",
   description: "Speed over sprawl. Clarity over complexity. We forge precision-engineered quiz funnels designed for the modern attention span.",
 };
 

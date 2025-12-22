@@ -31,7 +31,7 @@ const staggerContainer = {
 
 const plans = [
   {
-    name: "The Engine Starter",
+    name: "The FUNNELS Starter",
     price: "$495",
     setup: "$495",
     description: "Perfect for businesses ready to capture their first high-intent leads.",
@@ -67,7 +67,7 @@ const plans = [
 const faqs = [
   {
     question: "How fast can I launch?",
-    answer: "Our Engine deploys in 7 days or less. We handle the technical lift while you focus on closing deals.",
+    answer: "Our FUNNELS deploy in 7 days or less. We handle the technical lift while you focus on closing deals.",
   },
   {
     question: "What's included in Lead Intelligence?",
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     question: "Can I upgrade later?",
-    answer: "Absolutely. Start with the Engine Starter and upgrade to Growth Accelerator anytime. We'll prorate your setup fee.",
+    answer: "Absolutely. Start with the FUNNELS Starter and upgrade to Growth Accelerator anytime. We'll prorate your setup fee.",
   },
   {
     question: "What CRMs do you integrate with?",
@@ -108,13 +108,13 @@ export default function PricingPage() {
               variants={fadeIn}
               className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.85] text-[#121212]"
             >
-              The Pricing <br /><span className="text-primary italic">Engine</span>
+              The Pricing <br /><span className="text-primary italic">FUNNELS</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              No complexity. Just conversion. One setup fee to forge the engine, one monthly fee to keep it redlined.
+              No complexity. Just conversion. One setup fee to forge your FUNNELS, one monthly fee to keep them redlined.
             </motion.p>
           </motion.div>
         </div>

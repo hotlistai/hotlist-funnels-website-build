@@ -33,7 +33,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
-            HOTLIST <span className="text-primary italic">ENGINE</span>
+            HOTLIST <span className="text-primary italic">FUNNELS</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-12">

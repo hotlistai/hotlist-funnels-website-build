@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/industry-template"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Nonprofit Donor Engagement | Hotlist Engine",
+  title: "Nonprofit Donor Engagement | HOTLIST FUNNELS",
   description: "Convert visitors into monthly donors and volunteers with our done-for-you engagement system.",
 }
 

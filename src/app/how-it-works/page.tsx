@@ -46,7 +46,7 @@ const timeline = [
     steps: [
       "Psychological profiling of your ideal customer avatar",
       "Competitive vulnerability mapping",
-      "Conversion engine blueprinting",
+      "HOTLIST FUNNELS blueprinting",
       "Loss aversion strategy development",
     ],
   },
@@ -140,7 +140,7 @@ export default function HowItWorksPage() {
               variants={fadeIn}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              Our process is stripped of bureaucracy and optimized for rapid deployment. We forge conversion engines at high velocity, moving from insight to ignition in days, not months.
+              Our process is stripped of bureaucracy and optimized for rapid deployment. We forge HOTLIST FUNNELS at high velocity, moving from insight to ignition in days, not months.
             </motion.p>
           </motion.div>
         </div>
