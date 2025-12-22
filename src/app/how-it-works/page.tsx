@@ -132,7 +132,7 @@ export default function HowItWorksPage() {
             </motion.div>
             <motion.h1
               variants={fadeIn}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 lowercase leading-[0.85] text-[#121212]"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.85] text-[#121212]"
             >
               System <br /><span className="text-primary italic">Architecture.</span>
             </motion.h1>
