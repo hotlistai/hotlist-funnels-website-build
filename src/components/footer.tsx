@@ -60,14 +60,22 @@ export function Footer() {
                   Pricing
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
-                >
-                  Connect
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    href="/book-a-demo"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
+                  >
+                    Book a Demo
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest font-bold"
+                  >
+                    Connect
+                  </Link>
+                </li>
             </ul>
           </div>
 

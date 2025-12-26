@@ -262,13 +262,13 @@ export default function HowItWorksPage() {
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12">
               Book a deployment demo to see how we can build your high-velocity conversion system.
             </motion.p>
-            <motion.div variants={fadeIn}>
-              <Link href="/contact">
-                <Button size="lg" className="text-xl h-20 px-16 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white shadow-xl">
-                  BOOK YOUR DEMO
-                </Button>
-              </Link>
-            </motion.div>
+              <motion.div variants={fadeIn}>
+                <Link href="/book-a-demo">
+                  <Button size="lg" className="text-xl h-20 px-16 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white shadow-xl">
+                    BOOK YOUR DEMO
+                  </Button>
+                </Link>
+              </motion.div>
           </motion.div>
         </div>
       </section>

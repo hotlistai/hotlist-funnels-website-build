@@ -50,13 +50,13 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                 {data.subtitle}
               </p>
             </MotionFadeIn>
-            <MotionFadeIn>
-              <Link href="/contact">
-                <Button size="lg" className="text-lg h-12 px-8">
-                  Get Started
-                </Button>
-              </Link>
-            </MotionFadeIn>
+              <MotionFadeIn>
+                <Link href="/book-a-demo">
+                  <Button size="lg" className="text-lg h-12 px-8">
+                    Get Started
+                  </Button>
+                </Link>
+              </MotionFadeIn>
           </MotionSection>
         </div>
       </section>
@@ -189,13 +189,13 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                       <span className="text-left">{feature}</span>
                     </div>
                   ))}
-                  <div className="pt-6">
-                    <Link href="/contact">
-                      <Button size="lg" className="w-full">
-                        Get Started
-                      </Button>
-                    </Link>
-                  </div>
+                    <div className="pt-6">
+                      <Link href="/book-a-demo">
+                        <Button size="lg" className="w-full">
+                          Get Started
+                        </Button>
+                      </Link>
+                    </div>
                 </CardContent>
               </Card>
             </MotionFadeIn>
@@ -216,13 +216,13 @@ export function IndustryTemplate({ data }: { data: IndustryData }) {
                 Book a free demo to see how we can transform your lead generation
               </p>
             </MotionFadeIn>
-            <MotionFadeIn>
-              <Link href="/contact">
-                <Button size="lg" className="text-lg h-12 px-8">
-                  Book Your Demo
-                </Button>
-              </Link>
-            </MotionFadeIn>
+              <MotionFadeIn>
+                <Link href="/book-a-demo">
+                  <Button size="lg" className="text-lg h-12 px-8">
+                    Book Your Demo
+                  </Button>
+                </Link>
+              </MotionFadeIn>
           </MotionSection>
         </div>
       </section>

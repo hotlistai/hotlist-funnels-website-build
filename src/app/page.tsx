@@ -692,15 +692,15 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact">
-                    <Button className={`w-full h-14 rounded-none font-bold tracking-tight text-sm uppercase ${
-                      plan.highlight
-                        ? "bg-accent hover:bg-accent/90 text-white"
-                        : "bg-primary hover:bg-primary/90 text-white"
-                    }`}>
-                      Get Started
-                    </Button>
-                  </Link>
+                    <Link href="/book-a-demo">
+                      <Button className={`w-full h-14 rounded-none font-bold tracking-tight text-sm uppercase ${
+                        plan.highlight
+                          ? "bg-accent hover:bg-accent/90 text-white"
+                          : "bg-primary hover:bg-primary/90 text-white"
+                      }`}>
+                        Get Started
+                      </Button>
+                    </Link>
                 </div>
               </motion.div>
             ))}
@@ -916,15 +916,15 @@ export default function Home() {
                       <div className="text-6xl md:text-7xl font-bold text-[#121212] tracking-tighter mb-4">
                         ${calculateRecovery().toLocaleString()}
                       </div>
-                      <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">in lost revenue per month</p>
-                      <Link href="/contact">
-                        <Button
-                          size="lg"
-                          className="w-full rounded-none bg-accent hover:bg-accent/90 font-bold uppercase tracking-widest text-xs h-16 text-white"
-                        >
-                          Book Deployment Demo
-                        </Button>
-                      </Link>
+                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">in lost revenue per month</p>
+                        <Link href="/book-a-demo">
+                          <Button
+                            size="lg"
+                            className="w-full rounded-none bg-accent hover:bg-accent/90 font-bold uppercase tracking-widest text-xs h-16 text-white"
+                          >
+                            Book Deployment Demo
+                          </Button>
+                        </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

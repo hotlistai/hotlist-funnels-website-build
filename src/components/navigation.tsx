@@ -49,55 +49,55 @@ export function Navigation() {
             >
               Pricing
             </Link>
-            <Link href="/contact">
-              <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight text-white text-xs uppercase letter-spacing-widest">
-                BOOK DEMO
-              </Button>
-            </Link>
-          </div>
+            <Link href="/book-a-demo">
+                <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight text-white text-xs uppercase letter-spacing-widest">
+                  BOOK DEMO
+                </Button>
+              </Link>
+            </div>
 
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="text-[#121212]">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-white">
-              <div className="flex flex-col gap-6 mt-6">
-                <div className="flex flex-col gap-4">
-                  <div className="font-bold text-[10px] uppercase tracking-widest text-muted-foreground">
-                    Solutions
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon" className="text-[#121212]">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] bg-white">
+                <div className="flex flex-col gap-6 mt-6">
+                  <div className="flex flex-col gap-4">
+                    <div className="font-bold text-[10px] uppercase tracking-widest text-muted-foreground">
+                      Solutions
+                    </div>
+                    <div className="flex flex-col gap-2 pl-4">
+                      {solutions.map((solution) => (
+                        <Link
+                          key={solution.href}
+                          href={solution.href}
+                          className="text-sm font-bold uppercase tracking-tight text-[#121212] hover:text-primary transition-colors"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {solution.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-2 pl-4">
-                    {solutions.map((solution) => (
-                      <Link
-                        key={solution.href}
-                        href={solution.href}
-                        className="text-sm font-bold uppercase tracking-tight text-[#121212] hover:text-primary transition-colors"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {solution.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <Link
-                  href="/how-it-works"
-                  className="text-xs font-bold uppercase tracking-widest text-[#121212]"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Architecture
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="text-xs font-bold uppercase tracking-widest text-[#121212]"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Pricing
-                </Link>
-                <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full rounded-none bg-primary hover:bg-primary/90 font-bold text-white text-xs uppercase py-6">Book a Demo</Button>
-                </Link>
+                  <Link
+                    href="/how-it-works"
+                    className="text-xs font-bold uppercase tracking-widest text-[#121212]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Architecture
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="text-xs font-bold uppercase tracking-widest text-[#121212]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link href="/book-a-demo" onClick={() => setMobileOpen(false)}>
+                    <Button className="w-full rounded-none bg-primary hover:bg-primary/90 font-bold text-white text-xs uppercase py-6">Book a Demo</Button>
+                  </Link>
               </div>
             </SheetContent>
           </Sheet>

@@ -232,7 +232,7 @@ export default function PricingPage() {
               Book a demo to see how we can recover your lost revenue.
             </motion.p>
             <motion.div variants={fadeIn}>
-              <Link href="/contact">
+              <Link href="/book-a-demo">
                 <Button size="lg" className="text-xl h-20 px-16 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white shadow-xl">
                   BOOK YOUR DEMO
                 </Button>
