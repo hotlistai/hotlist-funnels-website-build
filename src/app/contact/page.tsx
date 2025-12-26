@@ -26,6 +26,8 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { useState } from "react"
+import { submitContact } from "@/app/actions"
+import { Loader2 } from "lucide-react"
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -41,24 +43,37 @@ const formSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 })
 
-export default function ContactPage() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      industry: "",
-      message: "",
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    setIsSubmitted(true)
-  }
+  export default function ContactPage() {
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+  
+    const form = useForm<z.infer<typeof formSchema>>({
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+        name: "",
+        email: "",
+        phone: "",
+        industry: "",
+        message: "",
+      },
+    })
+  
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+      setIsSubmitting(true)
+      try {
+        const result = await submitContact(values)
+        if (result.success) {
+          setIsSubmitted(true)
+        } else {
+          alert("Something went wrong. Please try again.")
+        }
+      } catch (error) {
+        console.error(error)
+        alert("Something went wrong. Please try again.")
+      } finally {
+        setIsSubmitting(false)
+      }
+    }
 
   return (
     <div className="min-h-screen bg-background">
@@ -197,9 +212,16 @@ export default function ContactPage() {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full">
-                        Book Your Demo
-                      </Button>
+                        <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Submitting...
+                            </>
+                          ) : (
+                            "Book Your Demo"
+                          )}
+                        </Button>
                     </form>
                   </Form>
                 )}

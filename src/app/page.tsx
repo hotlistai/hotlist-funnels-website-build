@@ -21,6 +21,7 @@ import {
   ChevronRight,
   Loader2,
 } from "lucide-react"
+import { submitLead } from "@/app/actions"
 
 const springTransition = {
   type: "spring",
@@ -88,12 +89,22 @@ export default function Home() {
 
   const calculateRecovery = () => {
     const leads = parseInt(demoAnswers.ghostingLeads) || 0
-    return (demoAnswers.dealValue * leads * 0.2).toLocaleString()
+    return (demoAnswers.dealValue * leads * 0.2)
   }
 
-  const handleDemoNext = () => {
+  const handleDemoNext = async () => {
     if (demoStep === 2) {
       setIsScanning(true)
+      
+      // Submit to Supabase
+      const recoveryPotential = calculateRecovery()
+      await submitLead({
+        industry: demoAnswers.industry,
+        dealValue: demoAnswers.dealValue,
+        ghostingLeads: parseInt(demoAnswers.ghostingLeads) || 0,
+        recoveryPotential: recoveryPotential,
+      })
+
       setTimeout(() => {
         setIsScanning(false)
         setDemoStep(3)
@@ -903,7 +914,7 @@ export default function Home() {
                       </div>
                       <h3 className="text-xl font-bold mb-2 text-muted-foreground uppercase tracking-widest">Revenue Recovery Potential</h3>
                       <div className="text-6xl md:text-7xl font-bold text-[#121212] tracking-tighter mb-4">
-                        ${calculateRecovery()}
+                        ${calculateRecovery().toLocaleString()}
                       </div>
                       <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">in lost revenue per month</p>
                       <Link href="/contact">
