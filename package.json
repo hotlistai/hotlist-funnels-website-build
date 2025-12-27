@@ -1,7 +1,11 @@
 {
-    "name": "app",
+    "name": "hotlist-funnels-website-build",
     "version": "0.1.0",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hotlistai/hotlist-funnels-website-build.git"
+    },
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
