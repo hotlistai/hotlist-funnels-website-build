@@ -50,7 +50,7 @@ export function Navigation() {
               Pricing
             </Link>
             <Link href="/book-a-demo">
-                <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-tight text-white text-xs uppercase letter-spacing-widest">
+                <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-widest text-white text-xs uppercase">
                   BOOK DEMO
                 </Button>
               </Link>

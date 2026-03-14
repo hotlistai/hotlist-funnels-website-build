@@ -52,7 +52,7 @@ const plans = [
     description: "For teams ready to dominate their market with full intelligence.",
     features: [
       "Unlimited Funnels",
-      "Full Lyft Lead Intelligence",
+      "Full HOTLIST Lead Intelligence",
       "5k Outreach Contacts",
       "Advanced Analytics Dashboard",
       "A/B Testing Engine",
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     question: "What's included in Lead Intelligence?",
-    answer: "Full Lyft Lead Intelligence includes homeowner verification, equity analysis, distress signals, and B2B intent mapping based on hiring signals and tech-stack data.",
+    answer: "Full HOTLIST Lead Intelligence includes homeowner verification, equity analysis, distress signals, and B2B intent mapping based on hiring signals and tech-stack data.",
   },
   {
     question: "Can I upgrade later?",

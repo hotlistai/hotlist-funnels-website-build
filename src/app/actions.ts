@@ -18,7 +18,6 @@ export async function submitLead(data: {
   ])
 
   if (error) {
-    console.error("Error submitting lead:", error)
     return { success: false, error: error.message }
   }
 
@@ -43,7 +42,6 @@ export async function submitContact(data: {
   ])
 
   if (error) {
-    console.error("Error submitting contact:", error)
     return { success: false, error: error.message }
   }
 

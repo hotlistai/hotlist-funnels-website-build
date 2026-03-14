@@ -17,8 +17,16 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hotlistfunnels.com"),
   title: "HOTLIST FUNNELS | High-Velocity Conversion",
   description: "Speed over sprawl. Clarity over complexity. We forge precision-engineered quiz funnels designed for the modern attention span.",
+  openGraph: {
+    siteName: "HOTLIST FUNNELS",
+    url: "https://hotlistfunnels.com",
+  },
+  alternates: {
+    canonical: "https://hotlistfunnels.com",
+  },
 };
 
 export default function RootLayout({
@@ -39,7 +47,7 @@ export default function RootLayout({
         />
         <ErrorReporter />
         <Script
-          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
+          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts/route-messenger.js"
           strategy="afterInteractive"
           data-target-origin="*"
           data-message-type="ROUTE_CHANGE"

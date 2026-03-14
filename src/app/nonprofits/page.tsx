@@ -3,61 +3,61 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Nonprofit Donor Engagement | HOTLIST FUNNELS",
-  description: "Convert visitors into monthly donors and volunteers with our done-for-you engagement system.",
+  description: "Your donors gave once and disappeared because no one followed up. HOTLIST turns one-time gifts into monthly commitments — and silent contacts into active supporters.",
 }
 
 const data = {
   title: "Nonprofit Donor Engagement",
-  subtitle: "Convert website visitors into monthly donors and engaged volunteers",
+  subtitle: "Your donors gave once and disappeared because no one followed up. Let's change that.",
   iconName: "Heart" as const,
   problems: [
     {
-      title: "One-Time Donors",
-      description: "People give once but never become recurring monthly supporters",
+      title: "The Silent CRM",
+      description: "You have 2,000 contacts. They haven't heard from you in 8 months. Not because you don't care — because you don't have a system. That silence is costing you donors.",
     },
     {
-      title: "Low Volunteer Conversion",
-      description: "Lots of interest in volunteering, but few actually show up",
+      title: "Volunteer No-Shows",
+      description: "40 people signed up for Saturday. 8 showed up. You ordered lunch for 40. Volunteer intent is high. Your follow-up isn't converting it into action.",
     },
     {
-      title: "Grant Dependency",
-      description: "You rely too heavily on grants instead of building sustainable donor base",
+      title: "Grant Cliff",
+      description: "Your largest grant expires in 6 months. You have no recurring revenue to fall back on. You're one decision letter away from a budget crisis.",
     },
   ],
   howItWorks: [
     {
       step: "01",
-      title: "Impact-Focused Funnels",
-      description: "Landing pages that showcase your mission and the tangible impact of donations",
+      title: "Impact-First Funnels",
+      description: "Landing pages that translate your mission into specific, tangible outcomes. Not 'support our cause' — 'your $25/mo feeds a family of four for a week.'",
     },
     {
       step: "02",
       title: "Multi-Channel Campaigns",
-      description: "Reach potential donors through Facebook, Instagram, and Google Search",
+      description: "Facebook, Instagram, and Google campaigns targeting aligned donors by interest, giving history, and proximity. We find people who already want to give.",
     },
     {
       step: "03",
-      title: "Engagement Nurture",
-      description: "Automated email sequences convert one-time donors to monthly supporters",
+      title: "Monthly Giving Nurture",
+      description: "Automated email sequences convert one-time donors into monthly supporters over 30 days. Impact updates, stories, and a clear recurring gift ask.",
     },
     {
       step: "04",
-      title: "Volunteer Onboarding",
-      description: "Streamlined process gets volunteers from interest to active participation",
+      title: "Volunteer Activation System",
+      description: "Streamlined onboarding that moves volunteers from 'I signed up' to 'I showed up' with reminders, role details, and logistics — all automated.",
     },
   ],
   results: [
     {
       metric: "50-150",
-      description: "New donors monthly",
+      description: "New donors acquired monthly",
     },
     {
       metric: "30-40%",
-      description: "Monthly recurring conversion",
+      description: "One-time to monthly donor conversion",
     },
     {
       metric: "3-4x",
-      description: "Increase in volunteer signups",
+      description: "Increase in volunteer show-up rate",
     },
   ],
 }

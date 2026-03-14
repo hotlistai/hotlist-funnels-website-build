@@ -97,7 +97,7 @@ const formSchema = z.object({
               variants={fadeIn}
               className="font-serif text-5xl md:text-6xl font-semibold mb-6"
             >
-              Book a Demo
+              Get in Touch
             </motion.h1>
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
               See how our conversion systems can transform your lead generation
