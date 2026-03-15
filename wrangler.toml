@@ -1,7 +1,12 @@
 name = "hotlist-funnels-website-build"
+account_id = "46e039d22187e71818afa40e1066b3e6"
 main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "hotlistfunnels.com", custom_domain = true }
+]
 
 [assets]
 directory = ".open-next/assets"
