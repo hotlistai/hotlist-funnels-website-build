@@ -131,22 +131,37 @@ export default function BookADemoPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Calendly */}
+            {/* Right: Cal.com */}
             <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-white border border-border shadow-2xl"
+              className="bg-white border border-border shadow-2xl overflow-hidden"
             >
               <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/hotlistai/hotlist-funnels-discovery-call?hide_gdpr_banner=1&primary_color=007aff"
+                id="cal-booking"
                 style={{ minWidth: "320px", height: "700px" }}
               />
               <Script
-                src="https://assets.calendly.com/assets/external/widget.js"
+                src="https://cal.com/embed.js"
                 strategy="afterInteractive"
+                onLoad={() => {
+                  // @ts-expect-error Cal is loaded via script
+                  window.Cal?.("init", "hotlist-funnels-discovery-call", { origin: "https://cal.com" })
+                  // @ts-expect-error Cal is loaded via script
+                  window.Cal?.("inline", {
+                    elementOrSelector: "#cal-booking",
+                    calLink: "hotlist-digital/hotlist-funnels-discovery-call",
+                    layout: "month_view",
+                    config: {
+                      theme: "light",
+                      cssVarsPerTheme: {
+                        light: { "cal-brand": "#007aff" },
+                      },
+                    },
+                  })
+                }}
               />
             </motion.div>
           </div>
