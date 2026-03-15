@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Script from "next/script"
+import { Check, Clock, Users, Zap } from "lucide-react"
 
 const springTransition = {
   type: "spring",
@@ -18,6 +19,39 @@ const fadeIn = {
   transition: springTransition,
 }
 
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const whatToExpect = [
+  {
+    icon: Clock,
+    title: "20 minutes",
+    description: "That's all it takes. We don't do hour-long sales calls. We show you what your funnel looks like, what it'll cost, and what you'll get back.",
+  },
+  {
+    icon: Users,
+    title: "You'll speak with a strategist",
+    description: "Not a closer. Someone who has built hundreds of funnels and will tell you honestly if HOTLIST is the right fit for your business.",
+  },
+  {
+    icon: Zap,
+    title: "Come ready to move",
+    description: "If it's a fit, we can kick off your funnel the same day. Have your target market, average deal size, and current lead source in mind.",
+  },
+]
+
+const prepList = [
+  "Your primary industry or niche",
+  "Your average deal size (rough estimate is fine)",
+  "How leads currently find you (ads, referrals, organic)",
+  "Your biggest bottleneck right now (leads, conversions, or both)",
+]
+
 export default function BookADemoPage() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
@@ -29,13 +63,7 @@ export default function BookADemoPage() {
           <motion.div
             initial="initial"
             animate="animate"
-            variants={{
-              animate: {
-                transition: {
-                  staggerChildren: 0.05,
-                },
-              },
-            }}
+            variants={staggerContainer}
             className="max-w-4xl"
           >
             <motion.div
@@ -43,7 +71,7 @@ export default function BookADemoPage() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-secondary border border-border text-[10px] font-bold uppercase tracking-widest mb-8 text-black"
             >
               <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
-              Live Revenue Audit
+              Live Revenue Audit — 20 Minutes
             </motion.div>
             <motion.h1
               variants={fadeIn}
@@ -55,31 +83,73 @@ export default function BookADemoPage() {
               variants={fadeIn}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              Schedule your 20-minute Revenue Recovery Audit and see how much lost revenue we can recover for your business.
+              20 minutes. We&apos;ll show you exactly what your funnel looks like, what it costs to not have one, and how fast we can have it live.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="bg-white border border-border shadow-2xl"
-          >
-            <div 
-              className="calendly-inline-widget" 
-              data-url="https://calendly.com/hotlistai/hotlist-funnels-discovery-call?hide_gdpr_banner=1&primary_color=007aff" 
-              style={{ minWidth: '320px', height: '700px' }}
-            />
-            <Script
-              src="https://assets.calendly.com/assets/external/widget.js"
-              strategy="afterInteractive"
-            />
-          </motion.div>
+      <section className="py-24 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+
+            {/* Left: What to expect + prep */}
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.h2 variants={fadeIn} className="text-3xl font-bold tracking-tighter mb-12 uppercase text-[#121212]">
+                What happens on the call.
+              </motion.h2>
+
+              <div className="space-y-10 mb-16">
+                {whatToExpect.map((item, i) => (
+                  <motion.div key={i} variants={fadeIn} className="flex gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-primary/5 border border-primary/10 flex items-center justify-center">
+                      <item.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-[#121212] mb-2">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground font-medium leading-relaxed">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div variants={fadeIn} className="bg-slate-50 border border-border p-8">
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-6">Come prepared with:</h3>
+                <ul className="space-y-4">
+                  {prepList.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm font-bold text-[#121212]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+
+            {/* Right: Calendly */}
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="bg-white border border-border shadow-2xl"
+            >
+              <div
+                className="calendly-inline-widget"
+                data-url="https://calendly.com/hotlistai/hotlist-funnels-discovery-call?hide_gdpr_banner=1&primary_color=007aff"
+                style={{ minWidth: "320px", height: "700px" }}
+              />
+              <Script
+                src="https://assets.calendly.com/assets/external/widget.js"
+                strategy="afterInteractive"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 

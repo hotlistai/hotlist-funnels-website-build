@@ -2,16 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 const solutions = [
@@ -29,27 +21,34 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="glass sticky top-0 z-50 border-b border-border bg-white/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
-            HOTLIST <span className="text-primary italic">FUNNELS</span>
-          </Link>
+    <header className="sticky top-0 z-50 flex flex-col">
+      {/* Trust Ticker */}
+      <div className="bg-primary text-white text-[10px] font-bold uppercase tracking-widest py-2 text-center">
+        7-Day Launch Guarantee&nbsp;&nbsp;·&nbsp;&nbsp;300+ Funnels Deployed&nbsp;&nbsp;·&nbsp;&nbsp;Rated 4.9 / 5
+      </div>
 
-          <div className="hidden md:flex items-center gap-12">
-            <Link
-              href="/how-it-works"
-              className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
-            >
-              Architecture
+      {/* Main Nav */}
+      <nav className="border-b border-border bg-white/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between">
+            <Link href="/" className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
+              HOTLIST <span className="text-primary italic">FUNNELS</span>
             </Link>
-            <Link
-              href="/pricing"
-              className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
-            >
-              Pricing
-            </Link>
-            <Link href="/book-a-demo">
+
+            <div className="hidden md:flex items-center gap-12">
+              <Link
+                href="/how-it-works"
+                className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
+              >
+                Architecture
+              </Link>
+              <Link
+                href="/pricing"
+                className="text-[10px] font-bold uppercase tracking-widest text-[#121212] hover:text-primary transition-colors"
+              >
+                Pricing
+              </Link>
+              <Link href="/book-a-demo">
                 <Button className="rounded-none bg-primary hover:bg-primary/90 font-bold px-8 h-12 tracking-widest text-white text-xs uppercase">
                   BOOK DEMO
                 </Button>
@@ -98,11 +97,12 @@ export function Navigation() {
                   <Link href="/book-a-demo" onClick={() => setMobileOpen(false)}>
                     <Button className="w-full rounded-none bg-primary hover:bg-primary/90 font-bold text-white text-xs uppercase py-6">Book a Demo</Button>
                   </Link>
-              </div>
-            </SheetContent>
-          </Sheet>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }

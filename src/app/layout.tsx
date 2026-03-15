@@ -18,15 +18,54 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hotlistfunnels.com"),
-  title: "HOTLIST FUNNELS | High-Velocity Conversion",
-  description: "Speed over sprawl. Clarity over complexity. We forge precision-engineered quiz funnels designed for the modern attention span.",
+  title: {
+    default: "HOTLIST FUNNELS | High-Velocity Lead Conversion",
+    template: "%s | HOTLIST FUNNELS",
+  },
+  description: "We build precision-engineered lead funnels that launch in 7 days and convert. Speed over sprawl. Clarity over complexity. 300+ funnels deployed.",
+  keywords: ["lead generation funnels", "conversion funnels", "lead capture system", "hotlist funnels", "sales funnel builder"],
   openGraph: {
+    type: "website",
     siteName: "HOTLIST FUNNELS",
     url: "https://hotlistfunnels.com",
+    title: "HOTLIST FUNNELS | High-Velocity Lead Conversion",
+    description: "We build precision-engineered lead funnels that launch in 7 days and convert. Speed over sprawl. Clarity over complexity.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HOTLIST FUNNELS | High-Velocity Lead Conversion",
+    description: "We build precision-engineered lead funnels that launch in 7 days and convert.",
   },
   alternates: {
     canonical: "https://hotlistfunnels.com",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hotlistfunnels.com/#organization",
+      name: "HOTLIST FUNNELS",
+      url: "https://hotlistfunnels.com",
+      description: "Precision-engineered lead funnels that launch in 7 days. 300+ funnels deployed.",
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hotlistfunnels.com/#website",
+      url: "https://hotlistfunnels.com",
+      name: "HOTLIST FUNNELS",
+      publisher: {
+        "@id": "https://hotlistfunnels.com/#organization",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -36,6 +75,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${instrumentSerif.variable} antialiased`}
       >
@@ -54,7 +99,7 @@ export default function RootLayout({
           data-include-search-params="true"
           data-only-in-iframe="true"
           data-debug="true"
-          data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
+          data-custom-data='{"appName": "HOTLIST FUNNELS", "version": "2.0.0"}'
         />
         {children}
         <VisualEditsMessenger />

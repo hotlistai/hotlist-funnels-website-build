@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -20,6 +20,9 @@ import {
   X,
   ChevronRight,
   Loader2,
+  Check,
+  Shield,
+  Star,
 } from "lucide-react"
 import { submitLead } from "@/app/actions"
 
@@ -49,29 +52,74 @@ const industryTabs = [
     id: "real-estate",
     label: "Real Estate",
     icon: HomeIcon,
-    headline: "Is your home losing $200/day in equity?",
-    cta: "Find out now.",
+    headline: "Every day you don't follow up, your competitor does.",
+    cta: "Stop losing listings to faster agents.",
     color: "from-emerald-500/10 to-emerald-600/5",
   },
   {
     id: "solar",
     label: "Solar",
     icon: Sun,
-    headline: "Stop paying the 'Grid Tax.'",
-    cta: "Calculate your solar savings in 30 seconds.",
+    headline: "That homeowner requested a quote 72 hours ago.",
+    cta: "Your competitor already called. Let's fix that.",
     color: "from-amber-500/10 to-amber-600/5",
   },
   {
     id: "b2b-saas",
     label: "B2B SaaS",
     icon: Building2,
-    headline: "Is your competition using AI to steal your market share?",
-    cta: "Take the audit.",
+    headline: "Your trial signups are leaking. Most never see Day 2.",
+    cta: "Build the onboarding funnel that converts.",
     color: "from-violet-500/10 to-violet-600/5",
   },
 ]
 
 const sliderValues = [1000, 5000, 10000, 25000, 50000, 75000, 100000]
+
+const valueStack = [
+  { item: "Custom funnel strategy & architecture", value: "$2,400" },
+  { item: "Conversion copywriting (Wiebe-framework)", value: "$3,000" },
+  { item: "Mobile-first funnel build (Next.js)", value: "$4,500" },
+  { item: "CRM integration & lead routing", value: "$1,200" },
+  { item: "AI lead scoring & qualification", value: "$1,800" },
+  { item: "A/B testing engine", value: "$900" },
+  { item: "Monthly optimization & velocity reports", value: "$1,200" },
+  { item: "Dedicated success manager", value: "$2,400" },
+]
+
+const testimonials = [
+  {
+    quote: "We went from 8 qualified leads a month to 47. In 30 days. The funnel launched in 6 days.",
+    name: "Marcus T.",
+    role: "Solar Installer, Texas",
+    result: "+488% leads",
+  },
+  {
+    quote: "Our intake form was losing cases to faster firms. HOTLIST fixed it. We now book 3x the consultations we used to.",
+    name: "Jennifer R.",
+    role: "Personal Injury Attorney, Florida",
+    result: "3x consultations",
+  },
+  {
+    quote: "I was hemorrhaging $40k/mo in ghosted real estate leads. HOTLIST recovered most of it within 60 days.",
+    name: "Derek M.",
+    role: "Real Estate Broker, California",
+    result: "$40k recovered/mo",
+  },
+]
+
+const forList = [
+  "Service businesses closing $5k–$500k+ deals",
+  "Operators tired of paying for leads that ghost",
+  "Teams ready to replace spreadsheets with systems",
+  "Businesses that need leads in days, not months",
+]
+
+const notForList = [
+  "$500 ticket items or impulse purchases",
+  "DIY hobbyists who want to tinker",
+  "Businesses not ready to follow up fast",
+]
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("real-estate")
@@ -95,8 +143,6 @@ export default function Home() {
   const handleDemoNext = async () => {
     if (demoStep === 2) {
       setIsScanning(true)
-      
-      // Submit to Supabase
       const recoveryPotential = calculateRecovery()
       await submitLead({
         industry: demoAnswers.industry,
@@ -104,7 +150,6 @@ export default function Home() {
         ghostingLeads: parseInt(demoAnswers.ghostingLeads) || 0,
         recoveryPotential: recoveryPotential,
       })
-
       setTimeout(() => {
         setIsScanning(false)
         setDemoStep(3)
@@ -122,6 +167,7 @@ export default function Home() {
   }
 
   const progress = demoStep === 0 ? 20 : 20 + (demoStep * 25)
+  const totalStackValue = valueStack.reduce((sum, item) => sum + parseInt(item.value.replace(/[$,]/g, "")), 0)
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
@@ -142,19 +188,22 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-secondary border border-border text-[10px] font-bold uppercase tracking-widest mb-8 text-black"
             >
               <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
-              Lead Intelligence Platform
+              7-Day Launch Guarantee · 300+ Funnels Deployed
             </motion.div>
             <motion.h1
               variants={fadeIn}
               className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.85] text-[#121212]"
             >
-              Stop Guessing. <br /><span className="text-primary italic">Start Closing.</span>
+              Your leads are<br /><span className="text-primary italic">ghosting you.</span>
             </motion.h1>
             <motion.p
               variants={fadeIn}
-              className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl leading-relaxed"
             >
-              Most funnels are leaky buckets. HOTLIST FUNNELS is a high-velocity capture system that uses Lead Intelligence to identify, qualify, and convert your best customers in under 60 seconds.
+              Every month you operate without a HOTLIST FUNNEL, you&apos;re funding your competitor&apos;s growth. We build precision lead capture systems that identify, qualify, and convert your best customers — in 7 days or less.
+            </motion.p>
+            <motion.p variants={fadeIn} className="text-sm font-bold uppercase tracking-widest text-primary mb-12">
+              No credit card. 60-second revenue audit below. →
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -162,15 +211,47 @@ export default function Home() {
                 size="lg"
                 className="text-base h-14 px-10 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white"
               >
-                SEE YOUR REVENUE POTENTIAL <ArrowRight className="ml-2 h-5 w-5" />
+                CALCULATE YOUR REVENUE LEAK <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Link href="/how-it-works">
                 <Button size="lg" variant="outline" className="text-base h-14 px-10 border-border hover:bg-secondary rounded-none font-bold tracking-tight">
-                  VIEW ARCHITECTURE
+                  SEE HOW IT WORKS
                 </Button>
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Social Proof Rail */}
+      <section className="py-16 border-b border-border bg-[#121212]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-px bg-white/5">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...springTransition, delay: i * 0.1 }}
+                className="bg-[#121212] p-10"
+              >
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-3 w-3 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-white/80 text-sm leading-relaxed mb-6 font-medium">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-white text-xs font-bold uppercase tracking-widest">{t.name}</div>
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mt-1">{t.role}</div>
+                  </div>
+                  <div className="text-accent text-xs font-bold uppercase tracking-widest">{t.result}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -291,106 +372,268 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mobile-First Funnels Section */}
+      {/* The Math Section */}
       <section className="py-32 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-16"
+          >
             <motion.div
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={staggerContainer}
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-accent"
             >
-              <motion.div
-                variants={fadeIn}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-primary"
-              >
-                Conversion Engineering
-              </motion.div>
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[0.9] text-[#121212]"
-              >
-                Mobile-First Funnels <br /><span className="text-primary italic">That Convert.</span>
-              </motion.h2>
-              <motion.div variants={fadeIn} className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                <p>
-                  <strong className="text-[#121212]">Speed is everything.</strong> We build the fastest funnels in the industry. Most funnels get abandoned within seconds because they&apos;re too slow. Users tap out before they even see the first question.
-                </p>
-                <p>
-                  We use Next.js and React to build the fastest-loading funnels in the industry. Lightning-fast page transitions keep users engaged from start to finish.
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeIn} className="grid grid-cols-2 gap-8 mt-12 border-t border-border pt-12">
-                <div>
-                  <div className="text-4xl font-bold text-primary tracking-tighter mb-1">&lt;1s</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Load Time</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary tracking-tighter mb-1">3x</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Better Engagement</div>
-                </div>
-              </motion.div>
-              <motion.div variants={fadeIn} className="mt-12">
-                <Button variant="link" className="p-0 h-auto font-bold uppercase tracking-widest text-[10px] text-[#121212] flex items-center gap-2">
-                  Next: Psychology of FOMO <ArrowRight className="h-3 w-3" />
-                </Button>
-              </motion.div>
+              The Math
             </motion.div>
+            <motion.h2
+              variants={fadeIn}
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase text-[#121212]"
+            >
+              What the leak<br /><span className="text-primary italic">actually costs you.</span>
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground max-w-2xl">
+              Most operators don&apos;t know how much they&apos;re bleeding until they see the number.
+            </motion.p>
+          </motion.div>
 
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { title: "Appointment", bg: "bg-blue-600", color: "text-white" },
-                  { title: "VSL Demo", bg: "bg-[#121212]", color: "text-white" },
-                  { title: "Recruiting", bg: "bg-amber-500", color: "text-white" },
-                  { title: "Lead Magnet", bg: "bg-blue-800", color: "text-white" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ ...springTransition, delay: i * 0.1 }}
-                    className={`${item.bg} aspect-[4/5] p-6 relative flex flex-col justify-between overflow-hidden group border border-border/10`}
-                  >
-                    <div className="z-10">
-                      <div className={`text-[10px] font-bold uppercase tracking-widest opacity-80 ${item.color}`}>{item.title}</div>
-                      <div className={`mt-2 text-xs font-bold leading-tight ${item.color}`}>
-                        {i === 0 && "Showcase your offer, qualify leads."}
-                        {i === 1 && "Guide potential clients through VSL."}
-                        {i === 2 && "Showcase company culture & recruiting."}
-                        {i === 3 && "Showcase lead magnet, capture details."}
-                      </div>
-                    </div>
-                    {/* Mock Phone UI */}
-                    <div className="relative mt-4 bg-white rounded-t-xl p-2 h-full translate-y-4 group-hover:translate-y-2 transition-transform shadow-2xl">
-                      <div className="w-full h-full border border-slate-100 rounded-t-lg bg-slate-50 flex flex-col p-2 gap-2 overflow-hidden">
-                        <div className="h-2 w-8 bg-slate-200 rounded-full mx-auto mb-2" />
-                        <div className="h-1 bg-primary/20 w-full rounded-full" />
-                        <div className="h-3 bg-slate-200 w-3/4 rounded-sm" />
-                        <div className="grid grid-cols-2 gap-1">
-                          <div className="h-12 bg-white border border-slate-100" />
-                          <div className="h-12 bg-white border border-slate-100" />
-                        </div>
-                        <div className="h-8 bg-primary w-full rounded-none mt-auto" />
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 h-5 w-5 rounded-full bg-white/20 flex items-center justify-center">
-                      <Zap className="h-2 w-2 text-white" />
-                    </div>
-                  </motion.div>
-                ))}
+          <div className="grid md:grid-cols-3 gap-px bg-border border border-border shadow-2xl">
+            {[
+              {
+                label: "If you lose",
+                value: "10 leads/mo",
+                sub: "to ghosting, slow follow-up, or bad funnels",
+                color: "text-[#121212]",
+              },
+              {
+                label: "At an average deal of",
+                value: "$10,000",
+                sub: "per closed customer",
+                color: "text-[#121212]",
+              },
+              {
+                label: "You&apos;re bleeding",
+                value: "$100k/mo",
+                sub: "in recoverable revenue — every single month",
+                color: "text-accent",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...springTransition, delay: i * 0.1 }}
+                className="bg-white p-12"
+              >
+                <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">{item.label}</div>
+                <div className={`text-5xl md:text-6xl font-bold tracking-tighter mb-4 ${item.color}`}
+                  dangerouslySetInnerHTML={{ __html: item.value }}
+                />
+                <div className="text-sm text-muted-foreground font-medium" dangerouslySetInnerHTML={{ __html: item.sub }} />
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...springTransition, delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <Button
+              onClick={() => setIsDemoOpen(true)}
+              size="lg"
+              className="text-base h-14 px-12 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white"
+            >
+              CALCULATE YOUR EXACT NUMBER <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Value Stack Section */}
+      <section className="py-32 border-b border-border bg-slate-50">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.div
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-secondary border border-border text-[10px] font-bold uppercase tracking-widest mb-8 text-black"
+            >
+              What You Get
+            </motion.div>
+            <motion.h2
+              variants={fadeIn}
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase text-[#121212]"
+            >
+              Everything included.<br /><span className="text-primary italic">Nothing held back.</span>
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
+              Here&apos;s what this would cost to assemble on your own.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="bg-white border border-border shadow-2xl"
+          >
+            {valueStack.map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn}
+                className="flex items-center justify-between px-10 py-6 border-b border-border last:border-b-0 hover:bg-slate-50 transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  <span className="text-sm font-bold text-[#121212] uppercase tracking-tight">{item.item}</span>
+                </div>
+                <span className="text-sm font-bold text-muted-foreground line-through">{item.value}</span>
+              </motion.div>
+            ))}
+            <div className="px-10 py-8 bg-primary/5 border-t-2 border-primary flex items-center justify-between">
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Total if you built this yourself</div>
+                <div className="text-3xl font-bold tracking-tighter text-muted-foreground line-through">${totalStackValue.toLocaleString()}/mo</div>
+              </div>
+              <div className="text-right">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">HOTLIST FUNNELS</div>
+                <div className="text-3xl font-bold tracking-tighter text-[#121212]">From $495/mo</div>
               </div>
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...springTransition, delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <Link href="/pricing">
+              <Button size="lg" className="text-base h-14 px-12 bg-primary hover:bg-primary/90 rounded-none font-bold tracking-tight text-white">
+                SEE FULL PRICING <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Who It's For / Not For */}
+      <section className="py-32 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              variants={fadeIn}
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 uppercase text-[#121212]"
+            >
+              Is HOTLIST FUNNELS<br /><span className="text-primary italic">right for you?</span>
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-px bg-border border border-border shadow-2xl max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={springTransition}
+              className="bg-white p-12"
+            >
+              <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-8 flex items-center gap-2">
+                <Check className="h-3 w-3" /> This is for you if...
+              </div>
+              <ul className="space-y-5">
+                {forList.map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm font-bold text-[#121212] leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...springTransition, delay: 0.1 }}
+              className="bg-slate-50 p-12"
+            >
+              <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-8 flex items-center gap-2">
+                <X className="h-3 w-3" /> This is NOT for you if...
+              </div>
+              <ul className="space-y-5">
+                {notForList.map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <X className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    <span className="text-sm font-medium text-muted-foreground leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Guarantee Section */}
+      <section className="py-32 border-b border-border bg-[#121212] text-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeIn} className="flex justify-center mb-8">
+              <div className="p-6 bg-accent/10 border border-accent/20">
+                <Shield className="h-16 w-16 text-accent" />
+              </div>
+            </motion.div>
+            <motion.div
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-accent"
+            >
+              The HOTLIST Guarantee
+            </motion.div>
+            <motion.h2
+              variants={fadeIn}
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 uppercase"
+            >
+              Live in 7 days.<br /><span className="text-accent italic">Or you don&apos;t pay setup.</span>
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+              We guarantee your funnel is fully built, integrated, and generating leads within 7 calendar days of kickoff. If we miss that window for any reason on our end, your setup fee is waived. Full stop.
+            </motion.p>
+            <motion.div variants={fadeIn}>
+              <Link href="/book-a-demo">
+                <Button size="lg" className="text-xl h-20 px-16 bg-accent hover:bg-accent/90 rounded-none font-bold tracking-tight text-white shadow-xl">
+                  CLAIM YOUR FUNNEL
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Psychology of FOMO Section */}
-      <section className="py-32 border-b border-border bg-[#121212] text-white overflow-hidden relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.15),transparent_70%)]" />
+      <section className="py-32 border-b border-border overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(0,122,255,0.06),transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <motion.div
@@ -401,39 +644,39 @@ export default function Home() {
             >
               <motion.div
                 variants={fadeIn}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent border border-accent/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-white"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-widest mb-8 text-accent"
               >
                 Behavioral Psychology
               </motion.div>
               <motion.h2
                 variants={fadeIn}
-                className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[0.9]"
+                className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[0.9] text-[#121212]"
               >
-                The Psychology <br /><span className="text-accent italic">of FOMO.</span>
+                The Psychology<br /><span className="text-accent italic">of FOMO.</span>
               </motion.h2>
-              <motion.p variants={fadeIn} className="text-xl text-white/60 mb-12 max-w-xl">
+              <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12 max-w-xl">
                 We leverage Loss Aversion and Scarcity to drive immediate action.
               </motion.p>
 
               <div className="space-y-12">
                 <motion.div variants={fadeIn} className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent/20 border border-accent/30 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent/10 border border-accent/20 flex items-center justify-center">
                     <TrendingUp className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Loss Aversion</h4>
-                    <p className="text-white/60 leading-relaxed">
-                      Homeowners fear losing $50k in home value more than they desire saving $10k on repairs. We frame your offer to trigger this primal response.
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2 text-[#121212]">Loss Aversion</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      People fear losing what they have 2x more than they desire gaining something new. We frame your offer to trigger this primal response.
                     </p>
                   </div>
                 </motion.div>
                 <motion.div variants={fadeIn} className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent/20 border border-accent/30 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent/10 border border-accent/20 flex items-center justify-center">
                     <Clock className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Scarcity</h4>
-                    <p className="text-white/60 leading-relaxed">
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-2 text-[#121212]">Scarcity</h4>
+                    <p className="text-muted-foreground leading-relaxed">
                       &quot;Only 3 assessment slots left in your area&quot; creates urgency that converts 3x better. Real-time data feeds make it authentic and powerful.
                     </p>
                   </div>
@@ -446,23 +689,23 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={springTransition}
-              className="relative aspect-square border border-white/10 bg-white/5 p-8 flex flex-col justify-center items-center text-center"
+              className="relative aspect-square border border-border bg-slate-50 p-8 flex flex-col justify-center items-center text-center"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-accent" />
               <div className="mb-8">
                 <Users className="h-16 w-16 text-accent mx-auto mb-6" />
                 <div className="text-sm font-bold uppercase tracking-widest text-accent mb-2">LIVE DATA FEED</div>
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 text-[#121212]">
                   12 People Active
                 </div>
-                <p className="text-white/60">Currently viewing offers in <span className="text-white font-bold">your local area</span></p>
+                <p className="text-muted-foreground">Currently viewing offers in <span className="text-[#121212] font-bold">your local area</span></p>
               </div>
-              <div className="bg-white/5 border border-white/10 p-6 w-full max-w-sm">
+              <div className="bg-white border border-border p-6 w-full max-w-sm shadow-sm">
                 <div className="flex justify-between items-center mb-4">
-                  <div className="text-[10px] font-bold uppercase tracking-widest">Available Slots</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#121212]">Available Slots</div>
                   <div className="text-accent font-bold">03/10</div>
                 </div>
-                <div className="h-2 bg-white/10 rounded-none overflow-hidden">
+                <div className="h-2 bg-slate-100 rounded-none overflow-hidden">
                   <motion.div
                     className="h-full bg-accent"
                     initial={{ width: "100%" }}
@@ -477,7 +720,7 @@ export default function Home() {
       </section>
 
       {/* Intelligence Feature Grid */}
-      <section className="py-32 border-b border-border">
+      <section className="py-32 border-b border-border bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -551,7 +794,7 @@ export default function Home() {
       </section>
 
       {/* Industry Chameleon Section */}
-      <section className="py-32 border-b border-border bg-slate-50">
+      <section className="py-32 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -567,7 +810,7 @@ export default function Home() {
               Industry <span className="text-accent italic">Chameleon</span>
             </motion.h2>
             <motion.p variants={fadeIn} className="text-xl text-muted-foreground">
-              One engine. Infinite applications.
+              One engine. Eight industries. Your market.
             </motion.p>
           </motion.div>
 
@@ -611,7 +854,7 @@ export default function Home() {
                   size="lg"
                   className="rounded-none bg-primary hover:bg-primary/90 font-bold tracking-tight text-white h-16 px-12 text-lg"
                 >
-                  START THE QUIZ <ArrowRight className="ml-2 h-5 w-5" />
+                  CALCULATE MY LEAK <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
             </motion.div>
@@ -619,8 +862,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Engine Section */}
-      <section className="py-32 border-b border-border">
+      {/* Pricing Preview */}
+      <section className="py-32 border-b border-border bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -653,7 +896,7 @@ export default function Home() {
                 name: "The Growth Accelerator",
                 price: "$995",
                 setup: "$995",
-                features: ["Unlimited Funnels", "Full Lyft Lead Intelligence", "5k Outreach Contacts"],
+                features: ["Unlimited Funnels", "Full HOTLIST Lead Intelligence", "5k Outreach Contacts"],
                 highlight: true,
               },
             ].map((plan, i) => (
@@ -692,24 +935,35 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                    <Link href="/book-a-demo">
-                      <Button className={`w-full h-14 rounded-none font-bold tracking-tight text-sm uppercase ${
-                        plan.highlight
-                          ? "bg-accent hover:bg-accent/90 text-white"
-                          : "bg-primary hover:bg-primary/90 text-white"
-                      }`}>
-                        Get Started
-                      </Button>
-                    </Link>
+                  <Link href="/book-a-demo">
+                    <Button className={`w-full h-14 rounded-none font-bold tracking-tight text-sm uppercase ${
+                      plan.highlight
+                        ? "bg-accent hover:bg-accent/90 text-white"
+                        : "bg-primary hover:bg-primary/90 text-white"
+                    }`}>
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <Link href="/pricing" className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
+              See full pricing breakdown →
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-32 bg-[#121212]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial="initial"
@@ -719,12 +973,15 @@ export default function Home() {
           >
             <motion.h2
               variants={fadeIn}
-              className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 uppercase text-[#121212]"
+              className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 uppercase text-white"
             >
               Ready to <span className="text-accent italic">Ignite</span>?
             </motion.h2>
-            <motion.p variants={fadeIn} className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Our onboarding is as fast as our funnels. Get your conversion engine live in 7 days or less.
+            <motion.p variants={fadeIn} className="text-xl text-white/60 mb-4 max-w-2xl mx-auto">
+              Live in 7 days. Guaranteed. If we miss it, you don&apos;t pay setup.
+            </motion.p>
+            <motion.p variants={fadeIn} className="text-sm font-bold uppercase tracking-widest text-white/30 mb-12">
+              No credit card required · 60-second audit
             </motion.p>
             <motion.div variants={fadeIn}>
               <Button
@@ -734,9 +991,6 @@ export default function Home() {
               >
                 CALCULATE YOUR RECOVERY
               </Button>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                No credit card required. 60-second audit.
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -766,7 +1020,6 @@ export default function Home() {
                 <X className="h-5 w-5 text-[#121212]" />
               </button>
 
-              {/* Progress Bar - Starts at 20% */}
               <div className="p-10 pb-0">
                 <div className="h-1 bg-slate-100 rounded-none overflow-hidden">
                   <motion.div
@@ -815,10 +1068,10 @@ export default function Home() {
                       exit={{ opacity: 0, x: -20 }}
                       transition={springTransition}
                     >
-                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">Which industry are you dominating?</h3>
-                      <p className="text-muted-foreground mb-8 text-sm font-medium">What opportunities are you currently missing?</p>
+                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">Which industry are you in?</h3>
+                      <p className="text-muted-foreground mb-8 text-sm font-medium">We&apos;ll calculate your specific recovery potential.</p>
                       <div className="grid grid-cols-1 gap-2">
-                        {["Real Estate", "Solar", "SaaS", "Professional Services", "Other"].map((opt) => (
+                        {["Real Estate", "Solar", "Legal", "Contractors", "Restaurants", "Other"].map((opt) => (
                           <button
                             key={opt}
                             onClick={() => {
@@ -844,8 +1097,8 @@ export default function Home() {
                       exit={{ opacity: 0, x: -20 }}
                       transition={springTransition}
                     >
-                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">What is the average value of a closed deal?</h3>
-                      <p className="text-muted-foreground mb-10 text-sm font-medium">How much revenue is being left on the table?</p>
+                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">Average value of a closed deal?</h3>
+                      <p className="text-muted-foreground mb-10 text-sm font-medium">How much is each lost lead worth to you?</p>
                       <div className="space-y-10">
                         <div className="text-center">
                           <div className="text-6xl font-bold text-[#121212] tracking-tighter mb-8">
@@ -869,7 +1122,7 @@ export default function Home() {
                           onClick={handleDemoNext}
                           className="w-full h-16 rounded-none bg-primary hover:bg-primary/90 font-bold uppercase tracking-widest text-xs py-4 text-white"
                         >
-                          Continue Phase
+                          Continue
                         </Button>
                       </div>
                     </motion.div>
@@ -881,14 +1134,14 @@ export default function Home() {
                       exit={{ opacity: 0, x: -20 }}
                       transition={springTransition}
                     >
-                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">How many leads are currently &apos;ghosting&apos; you?</h3>
-                      <p className="text-muted-foreground mb-8 text-sm font-medium">What conversations are slipping through the cracks?</p>
+                      <h3 className="text-3xl font-bold mb-2 text-[#121212] tracking-tighter uppercase">How many leads ghost you per month?</h3>
+                      <p className="text-muted-foreground mb-8 text-sm font-medium">Inquiries that went cold, no-shows, or never replied.</p>
                       <div className="space-y-10">
                         <input
                           type="number"
                           value={demoAnswers.ghostingLeads}
                           onChange={(e) => setDemoAnswers({ ...demoAnswers, ghostingLeads: e.target.value })}
-                          placeholder="Enter leads per month..."
+                          placeholder="Enter number of leads..."
                           className="w-full p-6 bg-slate-50 border border-border focus:border-primary focus:ring-0 focus:outline-none text-2xl font-bold text-[#121212]"
                         />
                         <Button
@@ -896,7 +1149,7 @@ export default function Home() {
                           disabled={!demoAnswers.ghostingLeads}
                           className="w-full h-16 rounded-none bg-primary hover:bg-primary/90 font-bold uppercase tracking-widest text-xs py-4 text-white disabled:opacity-50"
                         >
-                          Calculate Final Value
+                          Calculate My Number
                         </Button>
                       </div>
                     </motion.div>
@@ -912,19 +1165,19 @@ export default function Home() {
                       <div className="inline-flex items-center justify-center w-20 h-20 rounded-none bg-accent/10 mb-8 border border-accent/20">
                         <TrendingUp className="h-10 w-10 text-accent" />
                       </div>
-                      <h3 className="text-xl font-bold mb-2 text-muted-foreground uppercase tracking-widest">Revenue Recovery Potential</h3>
+                      <h3 className="text-xl font-bold mb-2 text-muted-foreground uppercase tracking-widest">Revenue You&apos;re Losing Monthly</h3>
                       <div className="text-6xl md:text-7xl font-bold text-[#121212] tracking-tighter mb-4">
                         ${calculateRecovery().toLocaleString()}
                       </div>
-                        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">in lost revenue per month</p>
-                        <Link href="/book-a-demo">
-                          <Button
-                            size="lg"
-                            className="w-full rounded-none bg-accent hover:bg-accent/90 font-bold uppercase tracking-widest text-xs h-16 text-white"
-                          >
-                            Book Deployment Demo
-                          </Button>
-                        </Link>
+                      <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-12">recoverable per month with HOTLIST FUNNELS</p>
+                      <Link href="/book-a-demo">
+                        <Button
+                          size="lg"
+                          className="w-full rounded-none bg-accent hover:bg-accent/90 font-bold uppercase tracking-widest text-xs h-16 text-white"
+                        >
+                          Book My 7-Day Launch Call
+                        </Button>
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
