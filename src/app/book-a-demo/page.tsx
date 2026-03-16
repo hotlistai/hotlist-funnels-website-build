@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
@@ -52,6 +53,55 @@ const prepList = [
 ]
 
 export default function BookADemoPage() {
+  useEffect(() => {
+    // Cal.com official inline embed bootstrap
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(function (C: any, A: string, L: string) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const p = (a: any, ar: any) => { a.q.push(ar) }
+      const d = C.document
+      C.Cal = C.Cal || function (...args: unknown[]) {
+        const cal = C.Cal
+        if (!cal.loaded) {
+          cal.ns = {}
+          cal.q = cal.q || []
+          const s = d.createElement("script")
+          s.src = A
+          d.head.appendChild(s)
+          cal.loaded = true
+        }
+        if (args[0] === L) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const api: any = (...a: unknown[]) => p(api, a)
+          api.q = []
+          const namespace = args[1]
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api
+            p(cal.ns[namespace], args)
+            p(cal, ["-s", namespace])
+          } else {
+            p(cal, args)
+          }
+          return
+        }
+        p(cal, args)
+      }
+    })(window, "https://app.cal.com/embed/embed.js", "init")
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const Cal = (window as any).Cal
+    Cal("init", "hvac-deployment", { origin: "https://app.cal.com" })
+    Cal.ns["hvac-deployment"]("inline", {
+      elementOrSelector: "#cal-booking",
+      calLink: "hotlistai/hvac-deployment",
+      layout: "month_view",
+    })
+    Cal.ns["hvac-deployment"]("ui", {
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    })
+  }, [])
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <Navigation />
@@ -164,13 +214,11 @@ export default function BookADemoPage() {
                 </div>
               </div>
 
-              {/* Calendar */}
+              {/* Calendar — Cal.com inline embed */}
               <div className="bg-white border border-border shadow-2xl overflow-hidden">
-                <iframe
-                  src="https://cal.com/hotlistai/hvac-deployment?embed=true&theme=light&layout=month_view&color=%23007aff"
-                  style={{ width: "100%", height: "700px", border: "none" }}
-                  title="Book a Demo — HOTLIST Funnels"
-                  loading="lazy"
+                <div
+                  id="cal-booking"
+                  style={{ minWidth: "320px", height: "700px" }}
                 />
               </div>
             </motion.div>
