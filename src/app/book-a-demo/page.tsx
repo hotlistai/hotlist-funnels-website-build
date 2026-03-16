@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Script from "next/script"
-import { Check, Clock, Users, Zap } from "lucide-react"
+import { Check, Clock, Users, Zap, Star } from "lucide-react"
 
 const springTransition = {
   type: "spring",
@@ -30,7 +30,7 @@ const staggerContainer = {
 const whatToExpect = [
   {
     icon: Clock,
-    title: "20 minutes",
+    title: "15 minutes",
     description: "That's all it takes. We don't do hour-long sales calls. We show you what your funnel looks like, what it'll cost, and what you'll get back.",
   },
   {
@@ -71,7 +71,7 @@ export default function BookADemoPage() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-secondary border border-border text-[10px] font-bold uppercase tracking-widest mb-8 text-black"
             >
               <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
-              Live Revenue Audit — 20 Minutes
+              Live Revenue Audit — 15 Minutes
             </motion.div>
             <motion.h1
               variants={fadeIn}
@@ -83,7 +83,7 @@ export default function BookADemoPage() {
               variants={fadeIn}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed"
             >
-              20 minutes. We&apos;ll show you exactly what your funnel looks like, what it costs to not have one, and how fast we can have it live.
+              15 minutes. We&apos;ll show you exactly what your funnel looks like, what it costs to not have one, and how fast we can have it live.
             </motion.p>
           </motion.div>
         </div>
@@ -137,32 +137,61 @@ export default function BookADemoPage() {
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-white border border-border shadow-2xl overflow-hidden"
+              className="space-y-4"
             >
-              <div
-                id="cal-booking"
-                style={{ minWidth: "320px", height: "700px" }}
-              />
-              <Script
-                src="https://cal.com/embed.js"
-                strategy="afterInteractive"
-                onLoad={() => {
-                  // @ts-expect-error Cal is loaded via script
-                  window.Cal?.("init", "hotlist-funnels-discovery-call", { origin: "https://cal.com" })
-                  // @ts-expect-error Cal is loaded via script
-                  window.Cal?.("inline", {
-                    elementOrSelector: "#cal-booking",
-                    calLink: "hotlist-digital/hotlist-funnels-discovery-call",
-                    layout: "month_view",
-                    config: {
-                      theme: "light",
-                      cssVarsPerTheme: {
-                        light: { "cal-brand": "#007aff" },
+              {/* Trust badge */}
+              <div className="flex items-center justify-between px-4 py-3 bg-accent/5 border border-accent/20">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-accent">300+ funnels deployed · 7-day launch guarantee</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free · 15 min</span>
+              </div>
+
+              {/* Social proof above calendar */}
+              <div className="bg-[#121212] p-6">
+                <div className="flex gap-1 mb-3">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-3 w-3 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-white/80 text-sm leading-relaxed mb-4 font-medium">&ldquo;I was hemorrhaging $40k/mo in ghosted real estate leads. HOTLIST recovered most of it within 60 days.&rdquo;</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-white text-xs font-bold uppercase tracking-widest">Derek M.</div>
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Real Estate Broker, California</div>
+                  </div>
+                  <div className="text-accent text-xs font-bold uppercase tracking-widest">$40k recovered/mo</div>
+                </div>
+              </div>
+
+              {/* Calendar */}
+              <div className="bg-white border border-border shadow-2xl overflow-hidden">
+                <div
+                  id="cal-booking"
+                  style={{ minWidth: "320px", height: "700px" }}
+                />
+                <Script
+                  src="https://cal.com/embed.js"
+                  strategy="afterInteractive"
+                  onLoad={() => {
+                    // @ts-expect-error Cal is loaded via script
+                    window.Cal?.("init", "hvac-deployment", { origin: "https://cal.com" })
+                    // @ts-expect-error Cal is loaded via script
+                    window.Cal?.("inline", {
+                      elementOrSelector: "#cal-booking",
+                      calLink: "hotlistai/hvac-deployment",
+                      config: {
+                        layout: "month_view",
+                        theme: "light",
+                        cssVarsPerTheme: {
+                          light: { "cal-brand": "#007aff" },
+                        },
                       },
-                    },
-                  })
-                }}
-              />
+                    })
+                  }}
+                />
+              </div>
             </motion.div>
           </div>
         </div>

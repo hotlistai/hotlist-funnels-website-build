@@ -77,14 +77,14 @@ const industryTabs = [
 const sliderValues = [1000, 5000, 10000, 25000, 50000, 75000, 100000]
 
 const valueStack = [
-  { item: "Custom funnel strategy & architecture", value: "$2,400" },
-  { item: "Conversion copywriting (Wiebe-framework)", value: "$3,000" },
-  { item: "Mobile-first funnel build (Next.js)", value: "$4,500" },
-  { item: "CRM integration & lead routing", value: "$1,200" },
-  { item: "AI lead scoring & qualification", value: "$1,800" },
-  { item: "A/B testing engine", value: "$900" },
-  { item: "Monthly optimization & velocity reports", value: "$1,200" },
-  { item: "Dedicated success manager", value: "$2,400" },
+  { item: "Revenue architecture that stops lead bleed", value: "$2,400" },
+  { item: "Words that convert cold traffic into booked calls", value: "$3,000" },
+  { item: "Lightning-fast funnel that works on any device", value: "$4,500" },
+  { item: "Every lead captured, scored, and routed automatically", value: "$1,200" },
+  { item: "AI that filters tire-kickers before they waste your time", value: "$1,800" },
+  { item: "Split-test engine that compounds your conversion rate", value: "$900" },
+  { item: "Monthly revenue performance & growth sprint", value: "$1,200" },
+  { item: "Dedicated success manager in your corner", value: "$2,400" },
 ]
 
 const testimonials = [
@@ -214,8 +214,8 @@ export default function Home() {
                 CALCULATE YOUR REVENUE LEAK <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Link href="/how-it-works">
-                <Button size="lg" variant="outline" className="text-base h-14 px-10 border-border hover:bg-secondary rounded-none font-bold tracking-tight">
-                  SEE HOW IT WORKS
+                <Button size="lg" variant="ghost" className="text-base h-14 px-10 hover:bg-secondary rounded-none font-bold tracking-tight text-muted-foreground hover:text-foreground">
+                  HOW IT WORKS →
                 </Button>
               </Link>
             </motion.div>
