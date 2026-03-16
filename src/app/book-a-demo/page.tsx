@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import Script from "next/script"
 import { Check, Clock, Users, Zap, Star } from "lucide-react"
 
 const springTransition = {
@@ -167,29 +166,11 @@ export default function BookADemoPage() {
 
               {/* Calendar */}
               <div className="bg-white border border-border shadow-2xl overflow-hidden">
-                <div
-                  id="cal-booking"
-                  style={{ minWidth: "320px", height: "700px" }}
-                />
-                <Script
-                  src="https://cal.com/embed.js"
-                  strategy="afterInteractive"
-                  onLoad={() => {
-                    // @ts-expect-error Cal is loaded via script
-                    window.Cal?.("init", "hvac-deployment", { origin: "https://cal.com" })
-                    // @ts-expect-error Cal is loaded via script
-                    window.Cal?.("inline", {
-                      elementOrSelector: "#cal-booking",
-                      calLink: "hotlistai/hvac-deployment",
-                      config: {
-                        layout: "month_view",
-                        theme: "light",
-                        cssVarsPerTheme: {
-                          light: { "cal-brand": "#007aff" },
-                        },
-                      },
-                    })
-                  }}
+                <iframe
+                  src="https://cal.com/hotlistai/hvac-deployment?embed=true&theme=light&layout=month_view&color=%23007aff"
+                  style={{ width: "100%", height: "700px", border: "none" }}
+                  title="Book a Demo — HOTLIST Funnels"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
