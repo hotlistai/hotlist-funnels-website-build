@@ -54,7 +54,6 @@ const prepList = [
 
 export default function BookADemoPage() {
   useEffect(() => {
-    // Cal.com official inline embed bootstrap
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(function (C: any, A: string, L: string) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -90,14 +89,14 @@ export default function BookADemoPage() {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const Cal = (window as any).Cal
-    Cal("init", "hvac-deployment", { origin: "https://app.cal.com" })
-    Cal.ns["hvac-deployment"]("inline", {
-      elementOrSelector: "#cal-booking",
-      calLink: "hotlistai/hvac-deployment",
-      layout: "month_view",
-    })
-    Cal.ns["hvac-deployment"]("ui", {
-      hideEventTypeDetails: false,
+    Cal("init", "audit", { origin: "https://app.cal.com" })
+    Cal.ns.audit("ui", {
+      theme: "light",
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#007AFF" },
+        dark: { "cal-brand": "#007AFF" },
+      },
+      hideEventTypeDetails: true,
       layout: "month_view",
     })
   }, [])
@@ -180,7 +179,7 @@ export default function BookADemoPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Cal.com */}
+            {/* Right: Cal.com popup trigger */}
             <motion.div
               initial="initial"
               whileInView="animate"
@@ -197,7 +196,7 @@ export default function BookADemoPage() {
                 <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free · 15 min</span>
               </div>
 
-              {/* Social proof above calendar */}
+              {/* Social proof */}
               <div className="bg-[#121212] p-6">
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((_, j) => (
@@ -214,12 +213,59 @@ export default function BookADemoPage() {
                 </div>
               </div>
 
-              {/* Calendar — Cal.com inline embed */}
-              <div className="bg-white border border-border shadow-2xl overflow-hidden">
-                <div
-                  id="cal-booking"
-                  style={{ minWidth: "320px", height: "700px" }}
-                />
+              {/* Blurred calendar preview — click triggers Cal.com popup */}
+              <div className="relative border border-border overflow-hidden bg-white shadow-2xl">
+                {/* Decorative blurred calendar */}
+                <div className="blur-sm pointer-events-none select-none p-6 opacity-60" aria-hidden>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-bold text-[#121212]">March 2026</span>
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 bg-secondary border border-border" />
+                      <div className="w-6 h-6 bg-secondary border border-border" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-7 gap-1 mb-2">
+                    {["S","M","T","W","T","F","S"].map((d, i) => (
+                      <div key={i} className="text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground py-1">{d}</div>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-7 gap-1">
+                    {[...Array(2)].map((_, i) => <div key={`e${i}`} />)}
+                    {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31].map((d) => (
+                      <div
+                        key={d}
+                        className={`text-center text-xs py-2 font-medium ${
+                          [18,19,20,25,26].includes(d)
+                            ? "bg-primary text-white font-bold"
+                            : d === 17
+                            ? "bg-[#121212] text-white font-bold"
+                            : "text-[#121212]"
+                        }`}
+                      >
+                        {d}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/70 backdrop-blur-[2px]">
+                  <div className="text-center px-8">
+                    <div className="flex h-3 w-3 rounded-full bg-accent animate-pulse mx-auto mb-4" />
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Spots available this week</p>
+                    <h3 className="text-2xl font-bold tracking-tighter text-[#121212] uppercase mb-6">Pick Your Time</h3>
+                    <button
+                      data-cal-namespace="audit"
+                      data-cal-link="hotlist-digital/audit"
+                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"}'
+                      className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold text-xs uppercase tracking-widest px-10 py-4 transition-colors cursor-pointer"
+                    >
+                      <span className="flex h-2 w-2 rounded-full bg-white/60" />
+                      BOOK YOUR FREE DEMO
+                    </button>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-4">15 min · No commitment · Instant confirm</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
