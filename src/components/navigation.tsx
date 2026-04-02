@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -31,8 +32,15 @@ export function Navigation() {
       <nav className="border-b border-border bg-white/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="text-2xl font-bold tracking-tighter uppercase text-[#121212]">
-              HOTLIST <span className="text-primary italic">FUNNELS</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/hotlist-funnels-wordmark.jpeg"
+                alt="HOTLIST FUNNELS"
+                width={180}
+                height={40}
+                className="h-10 w-auto object-contain"
+                priority
+              />
             </Link>
 
             <div className="hidden md:flex items-center gap-12">

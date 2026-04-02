@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Shield, Zap } from "lucide-react"
 
 const solutions = [
@@ -18,9 +19,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           <div className="space-y-6">
-            <div className="text-2xl font-bold tracking-tighter uppercase">
-              HOTLIST <span className="text-primary italic">FUNNELS</span>
-            </div>
+            <Image
+              src="/hotlist-funnels-icon.png"
+              alt="HOTLIST FUNNELS"
+              width={48}
+              height={48}
+              className="h-12 w-12 object-contain"
+            />
             <p className="text-sm text-white/50 leading-relaxed max-w-xs font-medium">
               Precision-engineered lead funnels. Built in 7 days. Guaranteed to convert or your setup is free.
             </p>
