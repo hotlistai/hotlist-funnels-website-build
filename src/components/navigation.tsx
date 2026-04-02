@@ -34,11 +34,11 @@ export function Navigation() {
           <div className="flex h-20 items-center justify-between">
             <Link href="/" className="flex items-center">
               <Image
-                src="/hotlist-funnels-wordmark.jpeg"
+                src="/hotlist-funnels-wordmark-transparent.png"
                 alt="HOTLIST FUNNELS"
-                width={180}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={200}
+                height={44}
+                className="h-10 w-auto object-contain mix-blend-multiply"
                 priority
               />
             </Link>

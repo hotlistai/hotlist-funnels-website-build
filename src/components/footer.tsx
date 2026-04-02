@@ -20,7 +20,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           <div className="space-y-6">
             <Image
-              src="/hotlist-funnels-icon.png"
+              src="/hotlist-funnels-icon-transparent.png"
               alt="HOTLIST FUNNELS"
               width={48}
               height={48}
