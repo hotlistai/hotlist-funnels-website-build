@@ -24,15 +24,26 @@ export const metadata: Metadata = {
   },
   description: "We build precision-engineered lead funnels that launch in 7 days and convert. Speed over sprawl. Clarity over complexity. 300+ funnels deployed.",
   keywords: ["lead generation funnels", "conversion funnels", "lead capture system", "hotlist funnels", "sales funnel builder"],
-  openGraph: {
-    type: "website",
+  
+  icons: {
+    icon: [
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+openGraph: {
+  images: [{ url: "/og-image.png" }],
+type: "website",
     siteName: "HOTLIST FUNNELS",
     url: "https://hotlistfunnels.com",
     title: "HOTLIST FUNNELS | High-Velocity Lead Conversion",
     description: "We build precision-engineered lead funnels that launch in 7 days and convert. Speed over sprawl. Clarity over complexity.",
   },
   twitter: {
-    card: "summary_large_image",
+    images: ["/og-image.png"],
+card: "summary_large_image",
     title: "HOTLIST FUNNELS | High-Velocity Lead Conversion",
     description: "We build precision-engineered lead funnels that launch in 7 days and convert.",
   },
